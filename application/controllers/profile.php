@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class admin extends CI_Controller {
+class profile extends CI_Controller {
+
 
 	public function __construct()
 	{
@@ -9,15 +10,14 @@ class admin extends CI_Controller {
 		cek_akses();
 		
 	}
-	
 	public function index()
 	{
-		$data['user']= $this->db->get_where('user', ['email' =>
+        $data['title']= 'My Profile';
+        $data['user']= $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		
 		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar',$data);
-		$this->load->view('dashboard', $data);
+		$this->load->view('template/sidebar', $data);
+		$this->load->view('profile', $data);
 		$this->load->view('template/footer');
 	}
 }

@@ -1,9 +1,11 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+  <div class="container my-auto">
+    <strong>Copyright &copy; SIPEKAteam <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.3-pre
+      <b>Version</b> 3.0.3-pre <?= date('Y'); ?>
     </div>
+  </div>
   </footer>
 
   <!-- Control Sidebar -->

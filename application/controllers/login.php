@@ -42,7 +42,12 @@ class login extends CI_Controller {
                             'role_id' => $user['role_id']
                         ];
                         $this->session->set_userdata($data);
+
+                        if($user['role_id'] == 1){
                         redirect('admin');
+                        }else{
+                            redirect('profile');
+                        }
                     }else{
                         $this->session->set_flashdata('message', 
                         '<div class="alert alert-danger" role="alert">Password anda salah</div>');
@@ -105,6 +110,11 @@ class login extends CI_Controller {
         '<div class="alert alert-success" role="alert">Anda telah Logout</div>');
         redirect('login');
         
+    }
+
+    public function blocked()
+    {
+        echo 'anda di bloked';
     }
 
 }
