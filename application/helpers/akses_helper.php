@@ -5,6 +5,8 @@ function cek_akses()
     $ci = get_instance();
     if(!$ci->session->userdata('email')){
         redirect('login');
+
+    
     } else {
         $role_id = $ci->session->userdata('role_id');
         $menu = $ci->uri->segment(1);
@@ -21,5 +23,7 @@ function cek_akses()
         if($userAccess->num_rows() < 1) {
             redirect('login/blocked');
         }
-    }
+    } 
 }
+
+?>  
