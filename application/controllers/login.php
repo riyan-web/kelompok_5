@@ -76,6 +76,7 @@ class login extends CI_Controller
     }
 
 
+
     public function registrasi()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -97,16 +98,51 @@ class login extends CI_Controller
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 1,
+                'is_active' => 0,
                 'date_created' => time()
             ];
 
-            $this->db->insert('user', $data);
+            // $this->db->insert('user', $data);
+
+            $this->_sendEmail();
+
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success" role="alert">Data anda ditambahkan. Silahkan Login</div>'
             );
             redirect('login');
+        }
+    }
+
+
+
+    private function _sendEmail()
+    {
+        $config = [
+            'protocol'    => 'smtp',
+            'smtp_host'   => 'ssl://smtp.googlemail.com',
+            'smtp_user'   => 'pencatatankependudukan@gmail.com',
+            'smtp_pass'   => 'sipeka123',
+            'smtp_port'   => 465,
+            'mailtype'    => 'html',
+            'charset'     => 'utf-8',
+        ];
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('pencatatankependudukan@gmail.com', 'Sistem Informasi Pencatatan Kependudukan');
+        $this->email->to('yudiiriyanto7@gmail.com');
+        $this->email->subject('Reset Password');
+        $this->email->message('klik link untuk mereset password');
+
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+
+            die;
         }
     }
 
@@ -126,5 +162,41 @@ class login extends CI_Controller
     {
 
         $this->load->view('template/not_found');
+    }
+
+    public function lupa_pass()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Lupa Password';
+            $this->load->view('login/lupa_password', $data);
+        } else {
+            $email = $this->input->post('email');
+            $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
+
+            if ($user) {
+                $token = base64_encode(random_bytes(32));
+                $user_token = [
+                    'email' => $email,
+                    'token' => $token,
+                    'date_created' => time()
+                ];
+
+                $this->db->insert('user_token', $user_token);
+                $this->_sendEmail($token, 'forgot');
+
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-succes" role="alert">Silahkan cek email anda untuk reset password</div>'
+                );
+                redirect('login/lupa_pass');
+            } else {
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-danger" role="alert">Email anda tidak terdaftar atau belum aktif</div>'
+                );
+                redirect('login/lupa_pass');
+            }
+        }
     }
 }

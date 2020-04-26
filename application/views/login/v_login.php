@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,53 +28,52 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+  <div class="wrapper">
     <br><br>
     <!-- Main content -->
     <section class="content">
-            <div class="row">
-            <!-- left column -->
-            <div class="col-md-4 mx-auto">
-                <!-- general form elements -->
-                <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Login</h3>
-                </div>
-                <br>
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-4 mx-auto">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Login</h3>
+            </div>
+            <br>
 
-                <?= $this->session->flashdata('message'); ?>
+            <?= $this->session->flashdata('message'); ?>
 
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" method="post" action="<?= base_url('login');?>">
-                  <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="<?= set_value('email'); ?>">
-                        <?= form_error('email',' <small class="text-danger pl-2">','</small>');?> 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                        <?= form_error('password',' <small class="text-danger pl-2">','</small>');?> 
-                    </div>
-                    
-                  </div>
-                  <!-- /.card-body -->
-                    <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-                <div class="text-center">
-                        <a href="<?= base_url('login/registrasi'); ?>">Buat Akun</a>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="<?= base_url('login'); ?>">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="<?= set_value('email'); ?>">
+                  <?= form_error('email', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  <?= form_error('password', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
-                <!-- /.card -->
+
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+            <div class="text-center">
+              <a href="<?= base_url('login/registrasi'); ?>">Buat Akun</a>
+              <br>
+              <a href="<?= base_url('login/lupa_pass'); ?>">Lupa Password ?</a </div> </div> <!-- /.card -->
             </div>
             <!--/.col (right) -->
-            </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
-    
+          </div>
+          <!-- /.row -->
+    </section>
+    <!-- /.content -->
