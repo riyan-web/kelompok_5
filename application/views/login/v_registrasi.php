@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= $judul ; ?></title>
+  <title><?= $judul; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -27,58 +28,61 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+  <div class="wrapper">
     <br><br>
     <!-- Main content -->
     <section class="content">
-            <div class="row">
-            <!-- left column -->
-            <div class="col-md-4 mx-auto">
-                <!-- general form elements -->
-                <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Registrasi Akun</h3>
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-4 mx-auto">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Registrasi Akun</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="<?= base_url('login/registrasi'); ?>">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nama Lengkap</label>
+                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" value="<?= set_value('nama'); ?>">
+                  <?= form_error('nama', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" method="post" action="<?= base_url('login/registrasi');?>">
-                  <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" value="<?= set_value('nama');?>">
-                          <?= form_error('nama',' <small class="text-danger pl-2">','</small>');?> 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Alamat Email</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="<?= set_value('email');?>">
-                        <?= form_error('email','<small class="text-danger pl-2">','</small>');?> 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
-                        <?= form_error('password1','<small class="text-danger pl-2">','</small>');?> 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Konfrimasi Pasword</label>
-                        <input type="password" class="form-control" id="password2" name="password2" placeholder="Ketik Ulang Password">
-                    </div>
-                    
-                  </div>
-                  <!-- /.card-body -->
-                    <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Registrasi</button>
-                    </div>
-                </form>
-                <div class="text-center">
-                        <a href="<?= base_url('login'); ?>">Kembali Ke Login</a>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Alamat Email</label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="<?= set_value('email'); ?>">
+                  <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+                  <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Konfrimasi Pasword</label>
+                  <input type="password" class="form-control" id="password2" name="password2" placeholder="Ketik Ulang Password">
+                </div>
+
               </div>
-                <!-- /.card -->
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Registrasi</button>
+              </div>
+            </form>
+            <div class="text-center">
+              <a href="<?= base_url('login'); ?>">Kembali Ke Login</a>
             </div>
-            <!--/.col (right) -->
+            <div class="text-center">
+              <a href="<?= base_url('login'); ?>">Kembali Ke Login</a>
             </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
-    
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->

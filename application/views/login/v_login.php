@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= $judul ?></title>
+  <title><?= $judul; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -42,8 +42,8 @@
             <div class="card-header">
               <h3 class="card-title">Login</h3>
             </div>
-            <br>
-
+            <!-- /.card-header -->
+            <!-- form start -->
             <?= $this->session->flashdata('message'); ?>
 
             <!-- /.card-header -->
@@ -52,7 +52,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="<?= set_value('email'); ?>">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" autocomplete="off" value="<?= set_value('email'); ?>">
                   <?= form_error('email', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="form-group">
@@ -64,16 +64,20 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Login</button>
               </div>
             </form>
             <div class="text-center">
               <a href="<?= base_url('login/registrasi'); ?>">Buat Akun</a>
-              <br>
-              <a href="<?= base_url('login/lupa_pass'); ?>">Lupa Password ?</a </div> </div> <!-- /.card -->
             </div>
-            <!--/.col (right) -->
+            <div class="text-center">
+              <a href="<?= base_url('login/lupa_pass'); ?>">Lupa Password ?</a>
+            </div>
           </div>
-          <!-- /.row -->
+          <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
