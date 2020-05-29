@@ -43,7 +43,8 @@ class login extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'email' => $user['email'],
-                        'role_id' => $user['role_id']
+                        'role_id' => $user['role_id'],
+                        'user_id' => $user['id_user']
                     ];
                     $this->session->set_userdata($data);
 
@@ -95,16 +96,16 @@ class login extends CI_Controller
             $data = [
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
-                'image' => 'default.jpg',
+                'image' => 'default.png',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 0,
                 'date_created' => time()
             ];
 
-            // $this->db->insert('user', $data);
+            $this->db->insert('user', $data);
 
-            $this->_sendEmail();
+            // $this->_sendEmail();
 
             $this->session->set_flashdata(
                 'message',

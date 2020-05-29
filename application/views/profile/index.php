@@ -34,6 +34,30 @@
             <div class="card-body">
               <h5 class="card-title"><?= $user['nama']; ?></h5>
               <p class="card-text"><?= $user['email']; ?></p>
+              <?php
+              $role_id = $this->session->userdata('role_id');
+              if ($role_id >= 2) {
+                $id_user = $user['id_user'];
+
+                //JOIN KETUA RT dengan KTP
+                $query_rt = "SELECT *
+                              FROM  `tb_ktp` JOIN `tb_ketuart` ON  `tb_ketuart`.`nik` = `tb_ktp`.`nik`
+                                             JOIN `tb_rt_rw`   ON  `tb_rt_rw`.`kodeRt` = `tb_ktp`.`kodeRt`
+                              WHERE`tb_ketuart`.`user_id` = $id_user
+                            ";
+
+                $rt = $this->db->query($query_rt)->row_array();
+                echo "NIK : " . $rt['nik'];
+                echo "<br />";
+                echo "NO KK : " . $rt['noKk'];
+                echo "<br />";
+                echo "RT : " . $rt['rt'];
+                echo "<br />";
+                echo "RW : " . $rt['rw'];
+                echo "<br />";
+                echo "Kelurahan : " . $rt['kelurahan'];
+              }
+              ?>
               <p class="card-text"><small class="text-muted"> <?= date('d F Y', $user['date_created']); ?></small></p>
             </div>
           </div>
