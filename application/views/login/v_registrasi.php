@@ -62,8 +62,8 @@
                   <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Konfrimasi Pasword</label>
-                  <input type="password" class="form-control" id="password2" name="password2" placeholder="Ketik Ulang Password">
+                  <label for="exampleInputPassword1">Konfirmasi Password</label>
+                  <input type="password" class="form-control" id=password2" name="password2" placeholder="Ketik Ulang Password">
                 </div>
 
               </div>
@@ -72,9 +72,6 @@
                 <button type="submit" class="btn btn-primary">Registrasi</button>
               </div>
             </form>
-            <div class="text-center">
-              <a href="<?= base_url('login'); ?>">Kembali Ke Login</a>
-            </div>
             <div class="text-center">
               <a href="<?= base_url('login'); ?>">Kembali Ke Login</a>
             </div>

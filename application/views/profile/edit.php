@@ -30,14 +30,14 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="nama" class="col-sm-2 col-form-label">Fullname</label>
+              <label for="nama" class="col-sm-2 col-form-label">Full Name</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="nama" name="nama" value="<?= $user['nama']; ?>">
                 <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-2 col-form-label">Gambar</div>
+              <div class="col-sm-2 col-form-label">Upload picture</div>
               <div class="col-sm-10">
                 <div class="row">
                   <div class="col-sm-3">
