@@ -1,12 +1,19 @@
 <?php
 
 $id_user = $user['id_user'];
-$query_rt = "SELECT *
-FROM  `tb_Kk` JOIN `tb_ketuart` ON  `tb_ketuart`.`noKk` = `tb_Kk`.`noKk`
-WHERE`tb_ketuart`.`user_id` = $id_user
-";
 
-$rt = $this->db->query($query_rt)->result();
+$query_rt = "SELECT `tb_ktp`.`nik`, `tb_ketuart`.`nik`, `user_id`, `tb_rt_rw`.`kodeRt`,`rt`, `rw`
+                              FROM  `tb_ktp` JOIN `tb_ketuart` ON  `tb_ketuart`.`nik` = `tb_ktp`.`nik`
+                                             JOIN `tb_rt_rw`   ON  `tb_rt_rw`.`kodeRt` = `tb_ktp`.`kodeRt`
+                              WHERE`tb_ketuart`.`user_id` = $id_user
+                            ";
+
+$rt_user = $this->db->query($query_rt)->row_array();
+$rt_user_coba = $rt_user['kodeRt'];
+
+$query_kk = "SELECT * FROM `tb_kk` WHERE `kodeRT` = $rt_user_coba ";
+$kartu_keluarga = $this->db->query($query_kk)->result();
+
 
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -39,6 +46,7 @@ $rt = $this->db->query($query_rt)->result();
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <a href="<?= base_url('data_warga/tambah_kk') ?>">Tambah Data</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
@@ -55,7 +63,7 @@ $rt = $this->db->query($query_rt)->result();
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                <?php foreach ($rt as $kk) { ?>
+                                <?php foreach ($kartu_keluarga as $kk) { ?>
                                     <tr>
                                         <th><?= $no ?> </th>
                                         <th><?php echo $kk->noKk ?></th>
@@ -67,7 +75,7 @@ $rt = $this->db->query($query_rt)->result();
                                         <th><?php echo $kk->dikeluarkanTanggal ?></th>
                                         <th>
                                             <button class="btn-lg warning"><?php echo anchor('data_warga/edit_kk/' . $kk->noKk, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_ktp/' . $kk->noKk, 'Hapus'); ?></button>
+                                            <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_kk/' . $kk->noKk, 'Hapus'); ?></button>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

@@ -17,18 +17,18 @@ class Kk_model extends CI_model
         return $this->db->get('tb_ktp');
     }
 
-    function input_ktp($data, $table)
+    function input_kk($data, $table)
     {
         $this->db->insert($table, $data);
     }
 
-    function hapus_ktp($where, $table)
+    function hapus_kk($where, $table)
     {
         $this->db->where($where);
         $this->db->delete($table);
     }
 
-    function edit_ktp($where, $table)
+    function edit_kk($where, $table)
     {
         return $this->db->get_where($table, $where);
     }

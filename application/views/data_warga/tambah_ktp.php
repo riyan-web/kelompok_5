@@ -55,6 +55,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                     </div>
                 </div>
                 <!-- /.card-header -->
+                <?= $this->session->flashdata('message'); ?>
                 <form action="<?= base_url('data_warga/tambah_ktp'); ?>" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="row">
@@ -79,14 +80,17 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <div class="form-group">
                                     <label>Nama</label>
                                     <input type="text" name="nama" class="form-control" style="width: 100%;">
+                                    <?= form_error('nama', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Tempat Lahir</label>
                                     <input type="text" name="tmp_lahir" class="form-control" style="width: 100%;">
+                                    <?= form_error('tmp_lahir', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Tanggal Lahir</label>
                                     <input type="date" name="tgl_lahir" class="form-control" style="width: 100%;">
+                                    <?= form_error('tgl_lahir', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Jenis Kelamin</label>
@@ -109,10 +113,14 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <div class="form-group">
                                     <label>Alamat</label>
                                     <textarea name="alamat" class="form-control" name="alamat"></textarea>
+                                    <?= form_error('alamat', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>RT</label>
                                     <input type="text" enabled="enabled" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="kode_rt" value="<?= $rt_user['kodeRt']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>RW</label>
@@ -127,10 +135,12 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <div class="form-group">
                                     <label>Kelurahan</label>
                                     <input type="text" name="kelurahan" class="form-control" style="width: 100%;">
+                                    <?= form_error('kelurahan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Kecamtan</label>
                                     <input type="text" name="kecamatan" class="form-control" style="width: 100%;">
+                                    <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Agama</label>
@@ -154,14 +164,17 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <div class="form-group">
                                     <label>Pekerjaan</label>
                                     <input type="text" name="pekerjaan" class="form-control" style="width: 100%;">
+                                    <?= form_error('pekerjaan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Kewarganegaraan</label>
                                     <input type="text" name="kewarganegaraan" class="form-control" style="width: 100%;">
+                                    <?= form_error('kewarganegaraan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Berlaku Hingga</label>
                                     <input type="text" name="berlaku" class="form-control" style="width: 100%;">
+                                    <?= form_error('berlaku', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
 
                                 <div class="form-group">
