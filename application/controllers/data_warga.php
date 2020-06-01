@@ -86,8 +86,17 @@ class Data_warga extends CI_Controller
         $this->ktp_model->hapus_ktp($where, 'tb_ktp');
         redirect('data_warga/ktp');
     }
-    public function edit_ktp()
+    public function edit_ktp($nik)
     {
+        $where = array('nik' => $nik);
+        $data['tb_ktp'] = $this->ktp_model->edit_ktp($where, 'tb_ktp')->result();
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['judul'] = 'Edit KTP';
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/edit_ktp', $data);
+        $this->load->view('template/footer');
     }
 
     public function kartu_keluarga()
