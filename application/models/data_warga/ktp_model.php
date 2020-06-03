@@ -25,9 +25,9 @@ class Ktp_model extends CI_model
         return $this->db->get_where($table, $where);
     }
 
-    function update_ktp($where, $data, $table)
+    function update_ktp($where, $edit_ktp, $table)
     {
         $this->db->where($where);
-        $this->db->update($table, $data);
+        $this->db->update($table, $edit_ktp);
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Bulan Mei 2020 pada 15.47
+-- Waktu pembuatan: 03 Jun 2020 pada 14.29
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.2
 
@@ -52,8 +52,8 @@ CREATE TABLE `tb_ketuart` (
 --
 
 INSERT INTO `tb_ketuart` (`id_ketua_rt`, `nik`, `noKk`, `user_id`) VALUES
-(1, '3511020284838282', '1111222233334444', 6),
-(3, '35346546545735', '2222333344445555', 8);
+(1, '3511020284838282', '2222333344445555', 6),
+(2, '35346455685633', '3333444455556666', 8);
 
 -- --------------------------------------------------------
 
@@ -70,16 +70,18 @@ CREATE TABLE `tb_kk` (
   `kabupaten` varchar(50) NOT NULL,
   `kodepos` varchar(10) NOT NULL,
   `provinsi` varchar(20) NOT NULL,
-  `dikeluarkanTanggal` varchar(20) NOT NULL
+  `dikeluarkanTanggal` varchar(20) NOT NULL,
+  `kodeRt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_kk`
 --
 
-INSERT INTO `tb_kk` (`noKk`, `namaKk`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `kodepos`, `provinsi`, `dikeluarkanTanggal`) VALUES
-('1111222233334444', 'anwar husein', 'jl.siliwangi no 09', 'demang', 'siliwangi', 'denpasar', '65282', 'bali', '21-08-2015'),
-('2222333344445555', 'riyadi', 'jl.dhshshsh', 'hshhshsh', 'shdhshsh', 'eywgdwe', '63272', 'dhsddb', '21-08-2015');
+INSERT INTO `tb_kk` (`noKk`, `namaKk`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `kodepos`, `provinsi`, `dikeluarkanTanggal`, `kodeRt`) VALUES
+('2222333344445555', 'aldi', 'shsadsjshc', 'fcsdhvds', 'dsfhdshfdh', 'sddhsfh', 'sdhhdfsd', 'dssdbbsd', 'sdbsdhs', 1),
+('3333444455556666', 'rudi', 'sdsachschs', 'dsvndsvhsd', 'sshshh', 'dshdshchv', 'sdsdmcsdm', 'sncsdnvv', 'dndvcndvn', 4),
+('4444555566667777', 'budi', 'hshchhhx', 'reghferh', 'gasgsgs', 'snsnns', 'hshsh', 'hshsh', 'hedyewfew', 1);
 
 -- --------------------------------------------------------
 
@@ -112,9 +114,9 @@ CREATE TABLE `tb_ktp` (
 --
 
 INSERT INTO `tb_ktp` (`nik`, `noKk`, `nama`, `tempatLahir`, `tanggalLahir`, `jenisKelamin`, `golDarah`, `alamat`, `kodeRt`, `kelurahan`, `kecamatan`, `agama`, `statusPerkawinan`, `pekerjaan`, `kewarganegaraan`, `berlakuHingga`, `gambar_ktp`) VALUES
-('3511020284838282', '1111222233334444', 'anwar husein', 'demang', '21-06-1994', 'laki-laki', 'o', 'jl.siliwangi', 3, 'demang', 'siliwangi', 'islam', 'belum kawin', 'buruh tani', 'indonesia', 'seumur hidup', 'default.jpg'),
-('35346546545735', '2222333344445555', 'andi ahmad', 'dgfdbdffd', 'dsddfdff', 'laki-laki', 'o', 'sdfegweggthnytm', 6, 'grehergwege', 'fdsfdsfds', 'ewgewgweb', 'belum kawin', 'dgerger', 'indonesia', 'seumur hidup', 'default.jpg'),
-('46476546457', '2222333344445555', 'riyanto', 'sfsdsgdvd', 'vsdbdfbd', 'vbbdfvfdfd', 'o', 'dvdvdssddssd', 6, 'grehergwege', 'fdsfdsfds', 'ewgewgweb', 'belum kawin', 'ewwegregg', 'indonesia', 'seumur hidup', 'default.jpg');
+('3511020284838282', '2222333344445555', 'fian', 'bondowoso', '21-06-1999', 'laki-laki', 'o', 'schsacscjsj', 1, 'grehergwege', 'siliwangi', 'ewgewgweb', 'belum kawin', 'ewwegregg', 'indonesia', 'seumur hidup', 'default.jpg'),
+('3522878767675454', '4444555566667777', 'abidin', 'dsjdssh', '1987-08-08', 'Laki-Laki', 'A', 'jl.nchsddshcsd', 1, 'bungurasih', '', 'Kristen', 'Belum kawin', 'wiraswasta', 'indonesia', 'seumur hidup', 'default.jpg'),
+('35346455685633', '3333444455556666', 'fiki', 'asasah', 'hahadjd', 'laki-laki', 'o', 'cbscsbcsba', 4, 'cjscjsjdsj', 'dsbshs', 'andsn', 'sdhhdhs', 'sdshdhs', 'sshdhd', 'sdgsgd', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -133,10 +135,10 @@ CREATE TABLE `tb_rt_rw` (
 --
 
 INSERT INTO `tb_rt_rw` (`kodeRt`, `rt`, `rw`) VALUES
-(3, '1', 1),
-(4, '2', 1),
-(5, '3', 1),
-(6, '4', 2);
+(1, '1', 1),
+(2, '2', 1),
+(3, '3', 2),
+(4, '4', 2);
 
 -- --------------------------------------------------------
 
@@ -297,7 +299,8 @@ ALTER TABLE `tb_ketuart`
 -- Indeks untuk tabel `tb_kk`
 --
 ALTER TABLE `tb_kk`
-  ADD PRIMARY KEY (`noKk`);
+  ADD PRIMARY KEY (`noKk`),
+  ADD KEY `kodeRt` (`kodeRt`);
 
 --
 -- Indeks untuk tabel `tb_ktp`
@@ -370,13 +373,13 @@ ALTER TABLE `tb_anggota`
 -- AUTO_INCREMENT untuk tabel `tb_ketuart`
 --
 ALTER TABLE `tb_ketuart`
-  MODIFY `id_ketua_rt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ketua_rt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_rt_rw`
 --
 ALTER TABLE `tb_rt_rw`
-  MODIFY `kodeRt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kodeRt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -432,6 +435,12 @@ ALTER TABLE `tb_ketuart`
   ADD CONSTRAINT `tb_ketuart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `tb_ketuart_ibfk_2` FOREIGN KEY (`nik`) REFERENCES `tb_ktp` (`nik`),
   ADD CONSTRAINT `tb_ketuart_ibfk_3` FOREIGN KEY (`noKk`) REFERENCES `tb_kk` (`noKk`);
+
+--
+-- Ketidakleluasaan untuk tabel `tb_kk`
+--
+ALTER TABLE `tb_kk`
+  ADD CONSTRAINT `tb_kk_ibfk_1` FOREIGN KEY (`kodeRt`) REFERENCES `tb_rt_rw` (`kodeRt`);
 
 --
 -- Ketidakleluasaan untuk tabel `tb_ktp`

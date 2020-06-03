@@ -55,7 +55,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
                 <?php foreach ($tb_ktp as $ktp) { ?>
-                    <form action="<?= base_url('data_warga/edit_ktp'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('data_warga/update_ktp'); ?>" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -178,6 +178,19 @@ $rt = $this->db->query($query_kodeRt)->result();
                                         <label>Berlaku Hingga</label>
                                         <input type="text" name="berlaku" class="form-control" style="width: 100%;" value="<?= $ktp->berlakuHingga; ?>">
                                         <?= form_error('berlaku', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Foto</label>
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <img src="<?= base_url('assets/img/ktp/') . $ktp->gambar_ktp; ?>" class="img-thumbnail">
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <input type="file" name="image" id="image">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
