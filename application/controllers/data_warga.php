@@ -232,7 +232,7 @@ class Data_warga extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        // $data['tb_ktp'] = $this->ktp_model->getKtp()->result();
+        $data['title'] = 'Kartu Keluarga';
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('data_warga/kartu_keluarga', $data);
@@ -254,7 +254,7 @@ class Data_warga extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
-            $data['judul'] = 'Form Registrasi';
+            $data['title'] = 'Form Registrasi';
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('data_warga/tambah_kk', $data);
@@ -296,8 +296,14 @@ class Data_warga extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $this->form_validation->set_rules('no_kk', 'Nomor Kartu Keluarga', 'required|trim|integer|min_length[16]|max_length[16]
-        |is_unique[tb_kk.noKk]', ['is_unique' => 'Nomor Kartu Keluarga di tambahkan sebelumnya!']);
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/edit_kk', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function update_kk($noKk)
+    {
         $this->form_validation->set_rules('nama_kk', 'Nama Kepala Keluarga', 'required|trim');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('tgl_dikeluarkan', 'Tanggal Dikeluarkan', 'required|trim');
@@ -307,59 +313,51 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('provinsi', 'Provinsi', 'required|trim');
         $this->form_validation->set_rules('kode_pos', 'Kode POS', 'required|trim');
 
-
         if ($this->form_validation->run() == false) {
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar', $data);
-            $this->load->view('data_warga/edit_kk', $data);
-            $this->load->view('template/footer');
+            redirect('data_warga/edit_kk');
         } else {
-            redirect('data_warga/update_kk');
+
+            $no_kk = $this->input->post('no_kk', true);
+            $nama_kk = $this->input->post('nama_kk', true);
+            $alamat = $this->input->post('alamat', true);
+            $kelurahan = $this->input->post('kelurahan', true);
+            $kecamatan = $this->input->post('kecamatan', true);
+            $kabupaten = $this->input->post('kabupaten', true);
+            $kodepos = $this->input->post('kode_pos', true);
+            $provinsi = $this->input->post('provinsi', true);
+            $tgl_dikeluarkan = $this->input->post('tgl_dikeluarkan', true);
+            $kode_rt = $this->input->post('kode_rt', true);
+
+
+            $this->db->set(
+                'namaKk',
+                $nama_kk,
+                'alamat',
+                $alamat,
+                'kelurahan',
+                $kelurahan,
+                'kecamatan',
+                $kecamatan,
+                'kabupaten',
+                $kabupaten,
+                'kodepos',
+                $kodepos,
+                'provinsi',
+                $provinsi,
+                'dikeluarkanTanggal',
+                $tgl_dikeluarkan,
+                'kodeRt',
+                $kode_rt
+            );
+            $this->db->where('noKk', $no_kk);
+            $this->db->update('tb_kk');
+
+
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data anda ditambahkan</div>'
+            );
+            redirect('data_warga/kartu_keluarga');
         }
-    }
-
-    public function update_kk()
-    {
-        $no_kk = $this->input->post('no_kk', true);
-        $nama_kk = $this->input->post('nama_kk', true);
-        $alamat = $this->input->post('alamat', true);
-        $kelurahan = $this->input->post('kelurahan', true);
-        $kecamatan = $this->input->post('kecamatan', true);
-        $kabupaten = $this->input->post('kabupaten', true);
-        $kodepos = $this->input->post('kode_pos', true);
-        $provinsi = $this->input->post('provinsi', true);
-        $tgl_dikeluarkan = $this->input->post('tgl_dikeluarkan', true);
-        $kode_rt = $this->input->post('kode_rt', true);
-
-
-        $this->db->set(
-            'nama_kk',
-            $nama_kk,
-            'alamat',
-            $alamat,
-            'kelurahan',
-            $kelurahan,
-            'kecamatan',
-            $kecamatan,
-            'kabupaten',
-            $kabupaten,
-            'kodepos',
-            $kodepos,
-            'provinsi',
-            $provinsi,
-            'dikeluarkanTanggal',
-            $tgl_dikeluarkan,
-            'kodeRt',
-            $kode_rt
-        );
-        $this->db->where('noKk', $no_kk);
-        $this->db->update('tb_kk');
-
-
-        $this->session->set_flashdata(
-            'message',
-            '<div class="alert alert-success" role="alert">Data anda ditambahkan</div>'
-        );
-        redirect('data_warga/tambah_kk');
     }
 }

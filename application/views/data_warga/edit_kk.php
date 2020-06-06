@@ -54,13 +54,13 @@ $rt = $this->db->query($query_kodeRt)->result();
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
                 <?php foreach ($tb_kk as $kk) { ?>
-                    <form action="<?= base_url('data_warga/edit_kk'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('data_warga/edit_kk'); ?>" method="post">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nomor Kartu Keluarga</label>
-                                        <input type="text" class="form-control" id="no_kk" name="no_kk" value="<?php echo $kk->noKk ?>" style="width: 100%;">
+                                        <input type="text" class="form-control" id="no_kk" name="no_kk" value="<?php echo $kk->noKk ?>" style="width: 100%;" readonly>
                                         <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
@@ -122,7 +122,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                         <?= form_error('kode_pos', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                     <!-- /.form-group -->
                                 </div>

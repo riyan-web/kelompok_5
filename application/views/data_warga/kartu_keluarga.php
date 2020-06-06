@@ -45,6 +45,7 @@ $kartu_keluarga = $this->db->query($query_kk)->result();
                         <h3 class="card-title">DataTable with default features</h3>
                     </div>
                     <!-- /.card-header -->
+                    <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
                         <a href="<?= base_url('data_warga/tambah_kk') ?>">Tambah Data</a>
                         <table id="example1" class="table table-bordered table-striped">
