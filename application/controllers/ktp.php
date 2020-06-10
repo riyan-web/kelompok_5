@@ -6,7 +6,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
-class Kontak extends REST_Controller
+class Ktp extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -19,12 +19,12 @@ class Kontak extends REST_Controller
     {
         $id = $this->get('nik');
         if ($id == '') {
-            $kontak = $this->db->get('tb_ktp')->result();
+            $ktp = $this->db->get('tb_ktp')->result();
         } else {
             $this->db->where('nik', $id);
-            $kontak = $this->db->get('tb_ktp')->result();
+            $ktp = $this->db->get('tb_ktp')->result();
         }
-        $this->response($kontak, 200);
+        $this->response($ktp, 200);
     }
 
     function index_post()
