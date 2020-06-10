@@ -6,7 +6,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
-class Kontak extends REST_Controller
+class Ktp extends REST_Controller
 {
 
     function __construct($config = 'rest')
