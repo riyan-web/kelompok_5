@@ -12,4 +12,5 @@ class M_logintest extends CI_Model
         $data = $this->db->get('user')->row_array();
         return $data;
     }
+   
 }
