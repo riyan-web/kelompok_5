@@ -20,8 +20,7 @@ class ktp_android extends REST_Controller
         $this->response(array("result"=>$ktp, 200));
     }
     
-    function index_post()
-    {
+    function index_post(){
         $data = array(
             'nik'               => $this->post('nik'),
             'noKk'              => $this->post('noKk'),
