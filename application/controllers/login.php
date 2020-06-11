@@ -19,7 +19,7 @@ class login extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Form Login';
+            $data['title'] = 'Form Login';
             $this->load->view('login/v_login', $data);
             $this->load->view('template/footer');
         } else {
@@ -89,7 +89,7 @@ class login extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Form Registrasi';
+            $data['title'] = 'Form Registrasi';
             $this->load->view('login/v_registrasi', $data);
             $this->load->view('template/footer');
         } else {

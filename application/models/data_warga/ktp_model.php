@@ -9,6 +9,12 @@ class Ktp_model extends CI_model
         return $data->row_array();
     }
 
+    public function detail_ktp($nik = NULL)
+    {
+        $query = $this->db->get_where('ismet_post', array('slug' => $nik))->row();
+		return $query;
+    }
+
     function input_ktp($data, $table)
     {
         $this->db->insert($table, $data);

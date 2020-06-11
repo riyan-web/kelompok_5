@@ -28,23 +28,16 @@ class Rest_login extends REST_Controller
                 //cek password
                 if (password_verify($password, $user['password'])) {
                     $data = [
+                        'id_user' => $user['id_user'],
+                        'nama' => $user['nama'],
                         'email' => $user['email'],
+                        'image' => $user['image'],
+                        'password' => $password,
                         'role_id' => $user['role_id'],
-                        'user_id' => $user['id_user']
+                        'is_active' => $user['is_active'],
+                        'date_created' => $user['date_created']
                     ];
-                    $this->session->set_userdata($data);
-
-                    if ($data['role_id'] == 2) {
-                        $data['id_user'] = $user['id_user'];
-                        $data['nama'] = $user['nama'];
-                        $data['email'] = $email;
-                        $data['image'] = $user['image'];
-                        $data['password'] = $password;
-                        $data['role_id'] = $user['role_id'];
-                        $data['is_active'] = $user['is_active'];
-                        $data['date_created'] = $user['date_created'];
-                        $this->response($data, 200);
-                    }
+                    $this->response($data, 200);
                 } else {
                     $this->response(array('status' => 'fail', 502));
                 }

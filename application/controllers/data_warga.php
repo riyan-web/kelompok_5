@@ -14,6 +14,7 @@ class Data_warga extends CI_Controller
 
     public function ktp()
     {
+        $data['title'] = 'Kartu Tanda Penduduk';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
@@ -22,6 +23,21 @@ class Data_warga extends CI_Controller
         $this->load->view('data_warga/ktp', $data);
         $this->load->view('template/footer');
     }
+
+    public function detail_ktp($nik)
+    {
+        $where = array('nik' => $nik);
+        $data['tb_ktp'] = $this->ktp_model->edit_ktp($where, 'tb_ktp')->row_array();
+        $data['title'] = 'Detail KTP';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/detail_ktp', $data);
+        $this->load->view('template/footer');
+    }
+
     public function tambah_ktp()
     {
         $this->form_validation->set_rules('nik', 'NIK', 'required|trim|integer|min_length[16]|max_length[16]
@@ -43,6 +59,7 @@ class Data_warga extends CI_Controller
         // $this->form_validation->set_rules('gambar_ktp', 'Gambar KTP', 'required|trim');
 
         if ($this->form_validation->run() == false) {
+            $data['title'] = 'Tambah KTP';
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
             $data['judul'] = 'Form Registrasi';
@@ -230,6 +247,7 @@ class Data_warga extends CI_Controller
 
     public function kartu_keluarga()
     {
+        $data['title'] = 'Kartu Keluarga';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['title'] = 'Kartu Keluarga';
@@ -252,6 +270,7 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('kode_pos', 'Kode POS', 'required|trim');
 
         if ($this->form_validation->run() == false) {
+            $data['title'] = 'tambah KK';
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
             $data['title'] = 'Form Registrasi';
