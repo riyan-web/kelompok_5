@@ -235,4 +235,16 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required|trim');
         $this->form_validation->set_rules('berlaku', 'Berlaku Hingga', 'required|trim');
     }
+
+    public function surat_domisili()
+    {
+        $data['title'] = 'Surat Domisili';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Kartu Keluarga';
+        // $this->load->view('template/header', $data);
+        // $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/surat_domisili', $data);
+        // $this->load->view('template/footer');
+    }
 }
