@@ -2,10 +2,11 @@
 
 $id_user = $user['id_user'];
 $query_rt = "SELECT `tb_ktp`.`nik`, `tb_ketuart`.`nik`, `user_id`, `tb_rt_rw`.`kodeRt`,`rt`, `rw`
-                              FROM  `tb_ktp` JOIN `tb_ketuart` ON  `tb_ketuart`.`nik` = `tb_ktp`.`nik`
-                                             JOIN `tb_rt_rw`   ON  `tb_rt_rw`.`kodeRt` = `tb_ktp`.`kodeRt`
-                              WHERE`tb_ketuart`.`user_id` = $id_user
-                            ";
+             FROM  `tb_ktp` 
+             JOIN `tb_ketuart` ON  `tb_ketuart`.`nik` = `tb_ktp`.`nik`
+             JOIN `tb_rt_rw`   ON  `tb_rt_rw`.`kodeRt` = `tb_ktp`.`kodeRt`
+             WHERE`tb_ketuart`.`user_id` = $id_user
+            ";
 
 $rt_user = $this->db->query($query_rt)->row_array();
 $rt_user_coba = $rt_user['kodeRt'];
@@ -55,13 +56,13 @@ $rt = $this->db->query($query_kodeRt)->result();
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
                 <?php foreach ($tb_ktp as $ktp) { ?>
-                    <form action="<?= base_url('data_warga/update_ktp'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nomor NIK</label>
-                                        <input type="text" class="form-control" name="nik" value="<?php echo $ktp->nik ?>" style="width: 100%;">
+                                        <input type="text" class="form-control" name="nik" value="<?php echo $ktp->nik ?>" style="width: 100%;" readonly>
                                         <?= form_error('nik', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
@@ -179,20 +180,6 @@ $rt = $this->db->query($query_kodeRt)->result();
                                         <input type="text" name="berlaku" class="form-control" style="width: 100%;" value="<?= $ktp->berlakuHingga; ?>">
                                         <?= form_error('berlaku', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Upload Foto</label>
-                                        <div class="col-sm-10">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <img src="<?= base_url('assets/img/ktp/') . $ktp->gambar_ktp; ?>" class="img-thumbnail">
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <input type="file" name="image" id="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         <div class="col-sm-10">
                                             <button type="submit" class="btn btn-primary">Edit</button>

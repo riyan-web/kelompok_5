@@ -33,9 +33,39 @@ class Kk_model extends CI_model
         return $this->db->get_where($table, $where);
     }
 
-    function update_ktp($where, $data, $table)
+    function update_kk($noKk)
     {
-        $this->db->where($where);
-        $this->db->update($table, $data);
+        $nama_kk = $this->input->post('nama_kk', true);
+        $alamat = $this->input->post('alamat', true);
+        $kelurahan = $this->input->post('kelurahan', true);
+        $kecamatan = $this->input->post('kecamatan', true);
+        $kabupaten = $this->input->post('kabupaten', true);
+        $kodepos = $this->input->post('kode_pos', true);
+        $provinsi = $this->input->post('provinsi', true);
+        $tgl_dikeluarkan = $this->input->post('tgl_dikeluarkan', true);
+        $kode_rt = $this->input->post('kode_rt', true);
+
+        $this->db->set(
+            'namaKk',
+            $nama_kk,
+            'alamat',
+            $alamat,
+            'kelurahan',
+            $kelurahan,
+            'kecamatan',
+            $kecamatan,
+            'kabupaten',
+            $kabupaten,
+            'kodepos',
+            $kodepos,
+            'provinsi',
+            $provinsi,
+            'dikeluarkanTanggal',
+            $tgl_dikeluarkan,
+            'kodeRt',
+            $kode_rt
+        );
+        $this->db->where('noKk', $noKk);
+        $this->db->update('tb_kk');
     }
 }

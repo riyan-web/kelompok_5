@@ -54,7 +54,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
                 <?php foreach ($tb_kk as $kk) { ?>
-                    <form action="<?= base_url('data_warga/edit_kk'); ?>" method="post">
+                    <form action="" method="post">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
