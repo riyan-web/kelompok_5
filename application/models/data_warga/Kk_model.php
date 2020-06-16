@@ -54,7 +54,7 @@ class Kk_model extends CI_model
             $kelurahan,
             'kecamatan',
             $kecamatan,
-            'kabupaten',
+            'kabupaten', 
             $kabupaten,
             'kodepos',
             $kodepos,

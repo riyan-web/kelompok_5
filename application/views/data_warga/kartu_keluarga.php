@@ -77,6 +77,7 @@ $kartu_keluarga = $this->db->query($query_kk)->result();
                                         <th>
                                             <button class="btn-lg warning"><?php echo anchor('data_warga/edit_kk/' . $kk->noKk, 'Edit'); ?></button>
                                             <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_kk/' . $kk->noKk, 'Hapus'); ?></button>
+                                            <button class="btn-lg warning"><?php echo anchor('data_warga/detail_kk/' . $kk->noKk, 'Detail'); ?></button>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

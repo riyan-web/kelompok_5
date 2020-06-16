@@ -5,14 +5,7 @@ class Ktp_model extends CI_model
 
     public function getKtp()
     {
-        $data = $this->db->query("SELECT * FROM tb_ktp");
-        return $data->row_array();
-    }
-
-    public function detail_ktp($nik = NULL)
-    {
-        $query = $this->db->get_where('ismet_post', array('slug' => $nik))->row();
-		return $query;
+        return $this->db->get('tb_ktp');
     }
 
     function input_ktp($data, $table)

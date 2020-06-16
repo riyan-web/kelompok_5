@@ -85,7 +85,8 @@ class Data_warga extends CI_Controller
                 'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
                 'kewarganegaraan' => htmlspecialchars($this->input->post('kewarganegaraan', true)),
                 'berlakuHingga' => htmlspecialchars($this->input->post('berlaku', true)),
-                'gambar_ktp' => 'default.jpg'
+                'gambar_ktp' => 'default.jpg',
+                'create'     =>  time()
             ];
 
             $this->db->insert('tb_ktp', $data);
@@ -137,6 +138,21 @@ class Data_warga extends CI_Controller
         $this->load->view('data_warga/kartu_keluarga', $data);
         $this->load->view('template/footer');
     }
+
+    public function detail_kk($noKk)
+    {
+        $where = array('noKk' => $noKk);
+        $data['tb_kk'] = $this->kk_model->edit_kk($where, 'tb_kk')->row_array();
+        $data['title'] = 'Detail Kartu Keluarga';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/detail_kk', $data);
+        $this->load->view('template/footer');
+    }
+
     public function tambah_kk()
     {
         $this->form_validation->set_rules('no_kk', 'Nomor Kartu Keluarga', 'required|trim|integer|min_length[16]|max_length[16]
@@ -242,9 +258,9 @@ class Data_warga extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['title'] = 'Kartu Keluarga';
-        // $this->load->view('template/header', $data);
-        // $this->load->view('template/sidebar', $data);
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
         $this->load->view('data_warga/surat_domisili', $data);
-        // $this->load->view('template/footer');
+        $this->load->view('template/footer');
     }
 }
