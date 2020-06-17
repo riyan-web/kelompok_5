@@ -140,7 +140,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                         <?= form_error('kelurahan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label>Kecamtan</label>
+                                        <label>Kecamatan</label>
                                         <input type="text" name="kecamatan" class="form-control" style="width: 100%;" value="<?= $ktp->kecamatan; ?>">
                                         <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
