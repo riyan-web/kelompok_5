@@ -5,7 +5,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
-class kabkot_android extends REST_Controller
+class prov_android extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -16,13 +16,11 @@ class kabkot_android extends REST_Controller
     function index_get()
     {
         $id = $this->get('name');
-        $id2= $this->get('province_id');
-        $id3= $this->get('id');
         if ($id == '') {
-            $kontak = $this->db->get('regencies')->result();
+            $kontak = $this->db->get('provinces')->result();
         } else {
             $this->db->where('name', $id);
-            $kontak = $this->db->get('regencies')->result();
+            $kontak = $this->db->get('provinces')->result();
         }
         $this->response($kontak, 200);
     }
