@@ -3,18 +3,12 @@
 class Kk_model extends CI_model
 {
 
-    public function getKk($data)
+    public function getKk()
     {
-        $id_user = $data['user_id'];
-        var_dump($id_user);
-        die;
-        $query_rt = "SELECT *
-        FROM  `tb_Kk` JOIN `tb_ketuart` ON  `tb_ketuart`.`noKk` = `tb_Kk`.`noKk`
-        WHERE`tb_ketuart`.`user_id` = $id_user
-        ";
-
-        $rt = $this->db->query($query_rt)->result();
-        return $this->db->get('tb_ktp');
+        $this->db->select('*');
+        $this->db->from('tb_kk');
+        $this->db->join('tb_rt_rw', 'tb_rt_rw.kodeRt = tb_kk.kodeRt');
+        return $this->db->get();
     }
 
     function input_kk($data, $table)
@@ -36,7 +30,7 @@ class Kk_model extends CI_model
     function update_kk($noKk)
     {
         $nama_kk = $this->input->post('nama_kk', true);
-        $alamat = $this->input->post('alamat', true);
+        $alamat = $this->input->post('alamat_kk', true);
         $kelurahan = $this->input->post('kelurahan', true);
         $kecamatan = $this->input->post('kecamatan', true);
         $kabupaten = $this->input->post('kabupaten', true);
@@ -54,7 +48,7 @@ class Kk_model extends CI_model
             $kelurahan,
             'kecamatan',
             $kecamatan,
-            'kabupaten', 
+            'kabupaten',
             $kabupaten,
             'kodepos',
             $kodepos,

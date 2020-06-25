@@ -1,9 +1,9 @@
 <footer class="main-footer">
   <div class="container my-auto">
     <strong> &copy; SIPEKAteam <a href="http://adminlte.io"></a></strong>
-    
+
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b>  <?= date('Y'); ?>
+      <b>Version</b> <?= date('Y'); ?>
     </div>
   </div>
 </footer>
@@ -28,6 +28,7 @@
 <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo base_url() ?>assets/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->

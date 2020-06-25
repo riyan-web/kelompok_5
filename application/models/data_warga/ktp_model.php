@@ -5,7 +5,10 @@ class Ktp_model extends CI_model
 
     public function getKtp()
     {
-        return $this->db->get('tb_ktp');
+        $this->db->select('*');
+        $this->db->from('tb_ktp');
+        $this->db->join('tb_rt_rw', 'tb_rt_rw.kodeRt = tb_ktp.kodeRt');
+        return $this->db->get();
     }
 
     function input_ktp($data, $table)
@@ -97,6 +100,5 @@ class Ktp_model extends CI_model
         );
         $this->db->where('nik', $nik);
         $this->db->update('tb_ktp');
-
     }
 }

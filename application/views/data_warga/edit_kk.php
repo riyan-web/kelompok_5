@@ -70,8 +70,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <input type="text" name="alamat" class="form-control" value="<?php echo $kk->alamat ?>" style="width: 100%;">
-                                        <?= form_error('alamat', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                        <input type="text" name="alamat_kk" class="form-control" value="<?php echo $kk->alamat ?>" style="width: 100%;">
+                                        <?= form_error('alamat_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Dikeluarkan</label>

@@ -88,7 +88,7 @@
               <i class="fas fa-user mr-2"></i> Profil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="<?= base_url('profile/ganti_password'); ?>" class="dropdown-item">
               <i class="fas fa-key mr-2"></i> Ubah Password
             </a>
             <div class="dropdown-divider"></div>

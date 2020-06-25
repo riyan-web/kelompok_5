@@ -73,7 +73,7 @@
               </div>
             </form>
             <div class="text-center">
-              <a href="<?= base_url('login'); ?>">Kembali Ke Login</a>
+              <a href="<?= base_url('admin'); ?>">Kembali Ke Dashboard</a>
             </div>
           </div>
           <!-- /.card -->

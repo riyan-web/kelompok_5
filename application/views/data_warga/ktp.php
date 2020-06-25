@@ -8,7 +8,7 @@
 
         $rt = $this->db->query($query_rt)->row_array();
 
-        $grup_rt = $rt['kodeRt'];
+        $grup_rt = $rt['kodeRt']; 
         $query_ktp = "SELECT *
                         FROM `tb_ktp` JOIN `tb_rt_rw` ON `tb_rt_rw`.`kodeRt` = `tb_ktp`.`kodeRt`
                                       JOIN `tb_kk` ON `tb_kk`.`noKk` = `tb_ktp`.`noKk`

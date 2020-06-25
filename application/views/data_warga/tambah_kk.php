@@ -58,7 +58,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nomor Kartu Keluarga</label>
+                                    <label>Nomor Kartu Keluarga</label> 
                                     <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="Nomor Kartu Keluarga" style="width: 100%;">
                                     <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>

@@ -68,9 +68,6 @@
               </div>
             </form>
             <div class="text-center">
-              <a href="<?= base_url('login/registrasi'); ?>">Buat Akun</a>
-            </div>
-            <div class="text-center">
               <a href="<?= base_url('login/lupa_pass'); ?>">Lupa Password ?</a>
             </div>
           </div>

@@ -62,7 +62,6 @@ class Data_warga extends CI_Controller
             $data['title'] = 'Tambah KTP';
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
-            $data['judul'] = 'Form Registrasi';
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('data_warga/tambah_ktp', $data);
@@ -86,7 +85,7 @@ class Data_warga extends CI_Controller
                 'kewarganegaraan' => htmlspecialchars($this->input->post('kewarganegaraan', true)),
                 'berlakuHingga' => htmlspecialchars($this->input->post('berlaku', true)),
                 'gambar_ktp' => 'default.jpg',
-                'create'     =>  time()
+                'created'     =>  date("Y-m-d")
             ];
 
             $this->db->insert('tb_ktp', $data);
@@ -98,6 +97,7 @@ class Data_warga extends CI_Controller
             redirect('data_warga/tambah_ktp');
         }
     }
+
     function hapus_ktp($nik)
     {
         $where = array('nik' => $nik);
@@ -213,7 +213,7 @@ class Data_warga extends CI_Controller
         $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('nama_kk', 'Nama Kepala Keluarga', 'required|trim');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('alamat_kk', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('tgl_dikeluarkan', 'Tanggal Dikeluarkan', 'required|trim');
         $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required|trim');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
@@ -229,7 +229,7 @@ class Data_warga extends CI_Controller
         } else {
             $this->kk_model->update_kk($noKk);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Menu berhasil diubah!</div>');
+            Data Kartu Keluarga berhasil diubah!</div>');
             redirect('data_warga/kartu_keluarga');
         }
     }
@@ -254,6 +254,5 @@ class Data_warga extends CI_Controller
 
     public function rt_rw()
     {
-        
     }
 }

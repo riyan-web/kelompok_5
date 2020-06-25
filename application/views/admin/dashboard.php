@@ -34,7 +34,7 @@
              <div class="icon">
                <i class="	fas fa-fw fa-address-card"></i>
              </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             <a href="admin/data_ktp_warga" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
            </div>
          </div>
          <!-- ./col -->
@@ -48,7 +48,7 @@
              <div class="icon">
                <i class="far fa-fw fa-credit-card"></i>
              </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             <a href="admin/data_kk_warga" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
            </div>
          </div>
          <!-- ./col -->
@@ -61,9 +61,9 @@
                <p>Data Ketua RT</p>
              </div>
              <div class="icon">
-               <i class="ion ion-person-add"></i>
+               <i class="fas fa-fw fa-user-tie"></i>
              </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             <a href="admin/data_rt" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
            </div>
          </div>
          <!-- ./col -->
@@ -76,9 +76,9 @@
                <p>Data Warga NON Domisili</p>
              </div>
              <div class="icon">
-               <i class="ion ion-pie-graph"></i>
+               <i class="fas fa-fw fa-users"></i>
              </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             <a href="admin/data_domisili_warga" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
            </div>
          </div>
          <!-- ./col -->
@@ -86,6 +86,7 @@
        <!-- /.row -->
        <!-- Main row -->
        <div class="row">
+         <a href="<?= base_url('chart/ktp_per_rt') ?>" class="btn btn-success">Lihat Laporan Chart</a>
          <!-- Left col -->
          <section class="col-lg-7 connectedSortable">
            <!-- Custom tabs (Charts with tabs)-->
