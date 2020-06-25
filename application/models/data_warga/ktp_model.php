@@ -16,6 +16,11 @@ class Ktp_model extends CI_model
         $this->db->insert($table, $data);
     }
 
+    function getAllKtp()
+    {
+        return $this->db->get('tb_ktp');
+    }
+
     function hapus_ktp($where, $table)
     {
         $this->db->where($where);

@@ -44,7 +44,6 @@ class admin extends CI_Controller
 
 	public function tambah_rt()
 	{
-		
 	}
 	public function data_kk_warga()
 	{
@@ -81,6 +80,8 @@ class admin extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 
 		$data['ketua_rt'] = $this->data_rt_model->getRt()->result();
+		$data['tb_ktp'] = $this->ktp_model->getAllKtp()->result();
+
 
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);

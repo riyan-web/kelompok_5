@@ -73,14 +73,17 @@ $user = $this->db->query($query_user)->result();
                                     <a href="<?= base_url('admin/tambah_rt') ?>" class="btn btn-success">Tambah RT</a>
                                 </div>
                                 <div class="form-group">
-                                    <label>Pindah Ke</label>
-                                    <input type="text" name="pindah_ke" class="form-control" style="width: 100%;">
-                                    <?= form_error('pindah_ke', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                </div>
-                                <div class="form-group">
-                                    <label>Alasan Pindah</label>
-                                    <input type="text" name="alasan_pindah" class="form-control" style="width: 100%;">
-                                    <?= form_error('alasan_pindah', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                    <label>Pilih KTP</label>
+                                    <select name="nik" class="form-control select2" style="width: 100%;">
+                                        <option value="">- piilih -</option>
+                                        <?php
+                                        foreach ($tb_ktp as $ktp) { ?>
+                                            <option value="<?= $ktp->nik ?>"><?= $ktp->nama ?></option>
+
+                                        <?php } ?>
+                                    </select>
+                                    <br>
+                                    <a href="<?= base_url('admin/tambah_ktp') ?>" class="btn btn-success">Tambah KTP</a>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
