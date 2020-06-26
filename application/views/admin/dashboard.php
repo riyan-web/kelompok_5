@@ -63,7 +63,7 @@
              <div class="icon">
                <i class="fas fa-fw fa-user-tie"></i>
              </div>
-             <a href="admin/data_rt" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             <a href="Rt/data_ketua_rt" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
            </div>
          </div>
          <!-- ./col -->
@@ -82,11 +82,23 @@
            </div>
          </div>
          <!-- ./col -->
+         <div class="col-lg-3 col-6">
+           <!-- small box -->
+           <div class="small-box bg-danger">
+             <div class="inner">
+               <p>Grafik Penduduk Domisili</p>
+             </div>
+             <div class="icon">
+               <i class="fas fa-fw fa-users"></i>
+             </div>
+             <a href="chart/ktp_per_rt" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           </div>
+         </div>
+         <!-- ./col -->
        </div>
        <!-- /.row -->
        <!-- Main row -->
        <div class="row">
-         <a href="<?= base_url('chart/ktp_per_rt') ?>" class="btn btn-success">Lihat Laporan Chart</a>
          <!-- Left col -->
          <section class="col-lg-7 connectedSortable">
            <!-- Custom tabs (Charts with tabs)-->

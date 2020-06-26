@@ -48,11 +48,11 @@ $user = $this->db->query($query_user)->result();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Pilih User</label>
-                                    <select name="user" class="form-control select2" style="width: 100%;">
+                                    <select name="id_user" class="form-control select2" style="width: 100%;">
                                         <option value="">- piilih -</option>
                                         <?php
-                                        foreach ($user as $r) { ?>
-                                            <option value="<?= $r->id_user ?>"><?= $r->nama ?></option>
+                                        foreach ($user as $u) { ?>
+                                            <option value="<?= $u->id_user ?>"><?= $u->nama ?></option>
 
                                         <?php } ?>
                                     </select>
@@ -61,12 +61,11 @@ $user = $this->db->query($query_user)->result();
                                 </div>
                                 <div class="form-group">
                                     <label>Pilih RT</label>
-                                    <select name="nik" class="form-control select2" style="width: 100%;">
+                                    <select name="kodeRt" class="form-control select2" style="width: 100%;">
                                         <option value="">- piilih -</option>
                                         <?php
                                         foreach ($tb_rt_rw as $rt) { ?>
-                                            <option value="<?= $r->id_user ?>"><?= $r->nama ?></option>
-
+                                            <option value="<?= $rt->kodeRt ?>"><?= "RT : " . $rt->rt . " RW : " . $rt->rw ?></option>
                                         <?php } ?>
                                     </select>
                                     <br>
@@ -78,35 +77,13 @@ $user = $this->db->query($query_user)->result();
                                         <option value="">- piilih -</option>
                                         <?php
                                         foreach ($tb_ktp as $ktp) { ?>
-                                            <option value="<?= $ktp->nik ?>"><?= $ktp->nama ?></option>
+                                            <option value="<?= $ktp->nik ?>"><?= $ktp->nama . " - " . $ktp->nik ?></option>
 
                                         <?php } ?>
                                     </select>
                                     <br>
-                                    <a href="<?= base_url('admin/tambah_ktp') ?>" class="btn btn-success">Tambah KTP</a>
+                                    <a href="<?= base_url('data_warga/tambah_ktp') ?>" class="btn btn-success">Tambah KTP</a>
                                 </div>
-                                <!-- /.form-group -->
-                            </div>
-
-                            <!-- /.col -->
-                            <div class="col-md-6">
-                                <!-- /.form-group -->
-                                <div class="form-group">
-                                    <label>Tanggal Surat Dibuat</label>
-                                    <input type="date" name="tgl_dibuat" class="form-control" style="width: 100%;">
-                                    <?= form_error('tgl_dibuat', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                </div>
-                                <div class="form-group">
-                                    <label>Tanggal Surat Masuk</label>
-                                    <input type="date" name="tgl_masuk" class="form-control" style="width: 100%;">
-                                    <?= form_error('tgl_masuk', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                </div>
-                                <div class="form-group">
-                                    <label>Keterangan</label>
-                                    <input type="text" name="keterangan" class="form-control" style="width: 100%;">
-                                    <?= form_error('keterangan', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>

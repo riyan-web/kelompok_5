@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Warga</h1>
+                    <h1>Data RT</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Data Ketua RT</li>
+                        <li class="breadcrumb-item"><a href="">RT</a></li>
+                        <li class="breadcrumb-item active">Data RT RW</li>
                     </ol>
                 </div>
             </div>
@@ -29,35 +29,27 @@
                     <!-- /.card-header -->
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
-                    <a href="<?= base_url('admin/tambah_data_ketuart') ?>">Tambah Data Ketua RT</a>
+                        <a href="<?= base_url('rt/tambah_data_rt') ?>">Tambah Data RT</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
                                     <th style="width: 30px;">No.</th>
-                                    <th>Nama</th>
-                                    <th>No Kartu Keluarga</th>
-                                    <th>Email</th>
-                                    <th>Password</th>
-                                    <th>Ketua RT</th>
+                                    <th>RT</th>
                                     <th>RW</th>
                                     <th style="width:150px;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                <?php foreach ($ketua_rt as $rt) { ?>
+                                <?php foreach ($all_rt as $rt) { ?>
                                     <tr>
                                         <th><?= $no ?> </th>
-                                        <th><?php echo $rt->nama ?></th>
-                                        <th><?php echo $rt->noKk ?></th>
-                                        <th><?php echo $rt->email ?></th>
-                                        <th><?php echo $rt->password ?></th>
                                         <th><?php echo $rt->rt ?></th>
                                         <th><?php echo $rt->rw ?></th>
                                         <th>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/edit_kk/' . $rt->noKk, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_kk/' . $rt->noKk, 'Hapus'); ?></button>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/detail_kk/' . $rt->noKk, 'Detail'); ?></button>
+                                            <button class="btn-lg warning"><?php echo anchor('rt/edit_data_rt/' . $rt->kodeRt, 'Edit'); ?></button>
+                                            <button class="btn-lg danger"><?php echo anchor('rt/hapus_data_rt/' . $rt->kodeRt, 'Hapus'); ?></button>
+
                                         </th>
                                     </tr>
                                     <?php $no++ ?>
