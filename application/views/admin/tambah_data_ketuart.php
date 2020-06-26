@@ -60,18 +60,6 @@ $user = $this->db->query($query_user)->result();
                                     <a href="<?= base_url('login/registrasi') ?>" class="btn btn-success">Tambah User</a>
                                 </div>
                                 <div class="form-group">
-                                    <label>Pilih RT</label>
-                                    <select name="kodeRt" class="form-control select2" style="width: 100%;">
-                                        <option value="">- piilih -</option>
-                                        <?php
-                                        foreach ($tb_rt_rw as $rt) { ?>
-                                            <option value="<?= $rt->kodeRt ?>"><?= "RT : " . $rt->rt . " RW : " . $rt->rw ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <br>
-                                    <a href="<?= base_url('admin/tambah_rt') ?>" class="btn btn-success">Tambah RT</a>
-                                </div>
-                                <div class="form-group">
                                     <label>Pilih KTP</label>
                                     <select name="nik" class="form-control select2" style="width: 100%;">
                                         <option value="">- piilih -</option>
