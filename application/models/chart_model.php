@@ -15,7 +15,13 @@ class Chart_model extends CI_model
 
     public function ktp_per_bulan()
     {
-        $query_ktp ="SELECT CONCAT(MONTH(created),'/',YEAR(created)) AS tahun_bulan, COUNT(*) AS jumlah_bulanan FROM tb_ktp GROUP BY MONTH(created),YEAR(created)";
+        $query_ktp = "SELECT CONCAT(MONTH(created),'/',YEAR(created)) AS tahun_bulan, COUNT(*) AS jumlah_bulanan FROM tb_ktp GROUP BY MONTH(created),YEAR(created)";
         return $this->db->query($query_ktp)->result();
     }
-} 
+
+    public function Kk_per_bulan()
+    {
+        $query_kk = "SELECT CONCAT(MONTH(created),'/',YEAR(created)) AS tahun_bulan_kk, COUNT(*) AS jumlah_bulanan_kk FROM tb_kk GROUP BY MONTH(created),YEAR(created)";
+        return $this->db->query($query_kk)->result();
+    }
+}

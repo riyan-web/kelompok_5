@@ -10,7 +10,6 @@ class admin extends CI_Controller
 		cek_akses();
 		$this->load->model('data_warga/ktp_model');
 		$this->load->model('data_warga/Kk_model');
-		$this->load->model('data_warga/data_rt_model');
 		$this->load->model('data_warga/Domisili_model');
 		$this->load->model('chart_model');
 	}
@@ -59,35 +58,8 @@ class admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
-	public function data_rt()
-	{
-		$data['title'] = 'Admin - Data RT';
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
-
-		$data['ketua_rt'] = $this->data_rt_model->getRt()->result();
-
-		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar', $data);
-		$this->load->view('admin/data_rt', $data);
-		$this->load->view('template/footer');
-	}
-
-	public function tambah_data_ketuart()
-	{
-		$data['title'] = 'Admin - Tambah Data Ketua RT';
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
-
-		$data['ketua_rt'] = $this->data_rt_model->getRt()->result();
-		$data['tb_ktp'] = $this->ktp_model->getAllKtp()->result();
 
 
-		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar', $data);
-		$this->load->view('admin/tambah_data_ketuart', $data);
-		$this->load->view('template/footer');
-	}
 
 	public function data_domisili_warga()
 	{

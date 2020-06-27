@@ -29,13 +29,13 @@
                     <!-- /.card-header -->
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
-                    <a href="<?= base_url('admin/tambah_data_ketuart') ?>">Tambah Data Ketua RT</a>
+                        <a href="<?= base_url('Rt/tambah_data_ketuart') ?>">Tambah Data Ketua RT</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
                                     <th style="width: 30px;">No.</th>
                                     <th>Nama</th>
-                                    <th>No Kartu Keluarga</th>
+                                    <th>No Induk Kependudukan</th>
                                     <th>Email</th>
                                     <th>Password</th>
                                     <th>Ketua RT</th>
@@ -49,7 +49,7 @@
                                     <tr>
                                         <th><?= $no ?> </th>
                                         <th><?php echo $rt->nama ?></th>
-                                        <th><?php echo $rt->noKk ?></th>
+                                        <th><?php echo $rt->nik ?></th>
                                         <th><?php echo $rt->email ?></th>
                                         <th><?php echo $rt->password ?></th>
                                         <th><?php echo $rt->rt ?></th>

@@ -12,4 +12,9 @@ class Rt_model extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
+
+    function getAllRt()
+    {
+        return $this->db->get('tb_rt_rw');
+    }
 }

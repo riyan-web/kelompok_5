@@ -16,6 +16,7 @@ class Ktp_per_rt extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['hasil'] = $this->chart_model->Ktp_per_bulan();
+        $data['hasil_kk'] = $this->chart_model->Kk_per_bulan();
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
