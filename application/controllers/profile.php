@@ -14,7 +14,7 @@ class profile extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = 'My Profile';
+		$data['title'] = 'Profil Saya';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
@@ -27,7 +27,7 @@ class profile extends CI_Controller
 
 	public function edit()
 	{
-		$data['title'] = 'Edit Profile';
+		$data['title'] = 'Edit Profil';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
@@ -71,7 +71,7 @@ class profile extends CI_Controller
 
 			$this->session->set_flashdata(
 				'message',
-				'<div class="alert alert-success" role="alert">Profile anda telah diubah</div>'
+				'<div class="alert alert-success" role="alert">Profil Anda Telah Diubah!</div>'
 			);
 			redirect('profile');
 		}
@@ -107,7 +107,7 @@ class profile extends CI_Controller
 				if ($password_lama == $password_baru) {
 					$this->session->set_flashdata(
 						'message',
-						'<div class="alert alert-danger" role="alert">Password baru anda tidak boleh sama dengan password lama</div>'
+						'<div class="alert alert-danger" role="alert">Password Baru Tidak Boleh Sama Dengan Password Lama</div>'
 					);
 					redirect('profile/ganti_password');
 				} else {
@@ -120,7 +120,7 @@ class profile extends CI_Controller
 
 					$this->session->set_flashdata(
 						'message',
-						'<div class="alert alert-success" role="alert">Password anda telah diubah</div>'
+						'<div class="alert alert-success" role="alert">Password Anda Telah Diubah!</div>'
 					);
 					redirect('profile/ganti_password');
 				}

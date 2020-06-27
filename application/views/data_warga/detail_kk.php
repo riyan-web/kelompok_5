@@ -23,7 +23,7 @@ $ktp_join = $this->db->query($ktp)->result();
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Kartu Penduduk</a></li>
-                        <li class="breadcrumb-item active">Detail Ktp</li>
+                        <li class="breadcrumb-item active">Detail KTP</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,7 +33,7 @@ $ktp_join = $this->db->query($ktp)->result();
                     <h5 class="card-title">Success card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-footer bg-transparent border-success">Footer</div>
+                <div class="card-footer bg-transparent border-success"></div>
             </div>
             <div class="card-deck">
                 <?php foreach ($ktp_join as $kj) : ?>
