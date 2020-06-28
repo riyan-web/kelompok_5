@@ -13,7 +13,7 @@ class Rest_login extends REST_Controller
     {
         parent::__construct($config);
         $this->load->database();
-        $this->load->model('m_logintest');
+        //$this->load->model('m_logintest');
     }
     function index_post()
     {

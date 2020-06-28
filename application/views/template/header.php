@@ -78,7 +78,7 @@
 
         <li class="nav-item dropdown">
           <a data-toggle="dropdown" href="#">
-            <?php echo 'selamat datang ' . $user['nama']; ?>
+            <?php echo '' . $user['nama']; ?>
             <span> <img src="<?php echo base_url('assets/img/profile/') . $user['image']; ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
             </span>
           </a>
@@ -92,13 +92,8 @@
               <i class="fas fa-key mr-2"></i> Ubah Password
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
             <a href="<?= base_url('login/logout'); ?>" class="dropdown-item dropdown-footer">
-              <i class="fas fa-sign-out-alt mr-2"></i>Logout
+              <i class="fas fa-sign-out-alt mr-2"></i>Keluar
             </a>
           </div>
         </li>

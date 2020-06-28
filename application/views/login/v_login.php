@@ -40,7 +40,7 @@
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Login</h3>
+              <h3 class="card-title">MASUK</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -51,7 +51,7 @@
             <form role="form" method="post" action="<?= base_url('login'); ?>">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label for="exampleInputEmail1">Email</label>
                   <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" autocomplete="off" value="<?= set_value('email'); ?>">
                   <?= form_error('email', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
@@ -64,7 +64,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Masuk</button>
               </div>
             </form>
             <div class="text-center">
