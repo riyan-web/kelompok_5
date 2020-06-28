@@ -61,6 +61,7 @@
                         data: [<?php echo $jumlah; ?>]
                     }],
                 },
+
                 // Configuration options go here
                 options: {
                     scales: {

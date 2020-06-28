@@ -28,36 +28,19 @@ class Domisili_model extends CI_model
         return $this->db->get_where($table, $where);
     }
 
-    function update_domisili()
+    function update_domisili($post)
     {
-        $id_domisili = $this->input->post('id_domisili');
-        $nik = $this->input->post('nik');
-        $alamat_asal = $this->input->post('alamat_asal');
-        $pindah_ke = $this->input->post('pindah_ke');
-        $alasan_pindah = $this->input->post('alasan_pindah');
-        $tgl_dibuat = $this->input->post('tgl_dibuat');
-        $tgl_masuk = $this->input->post('tgl_masuk');
-        $keterangan = $this->input->post('keterangan');
+        $params['id_domisili'] = $post['id_domisili'];
+        $params['nik'] = $post['nik'];
+        $params['alamat_asal'] = $post['alamat_asal'];
+        $params['pindah_ke'] = $post['pindah_ke'];
+        $params['alasan_pindah'] = $post['alasan_pindah'];
+        $params['tgl_surat_dibuat'] = $post['tgl_dibuat'];
+        $params['tgl_surat_masuk'] = $post['tgl_masuk'];
+        $params['keterangan'] = $post['keterangan'];
 
-        $this->db->set(
-            'id_domisili',
-            $id_domisili,
-            'nik',
-            $nik,
-            'alamat_asal',
-            $alamat_asal,
-            'pindah_ke',
-            $pindah_ke,
-            'alasan_pindah',
-            $alasan_pindah,
-            'tgl_surat_dibuat',
-            $tgl_dibuat,
-            'tgl_surat_masuk',
-            $tgl_masuk,
-            'keterangan',
-            $keterangan
-        );
-        $this->db->where('id_domisili', $id_domisili);
-        $this->db->update('domisili');
+
+        $this->db->where('id_domisili', $post['id_domisili']);
+        $this->db->update('domisili', $params);
     }
 }

@@ -70,24 +70,43 @@ class Domisili extends CI_Controller
     }
     public function edit_domisili($id_domisili)
     {
-        $where = array('id_domisili' => $id_domisili);
-        $data['domisili'] = $this->domisili_model->edit_domisili($where, 'domisili')->row_array();
-        $data['title'] = 'Edit Data Domisili';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
 
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('data_warga/edit_domisili', $data);
-        $this->load->view('template/footer');
-    }
+        $this->form_validation->set_rules('nik', 'Nomor Induk Kependudukan', 'required|trim');
+        $this->form_validation->set_rules('alamat_asal', 'Alamat Asal', 'required|trim');
+        $this->form_validation->set_rules('pindah_ke', 'Pindah Ke', 'required|trim');
+        $this->form_validation->set_rules('alasan_pindah', 'Alasan Pindah', 'required|trim');
+        $this->form_validation->set_rules('tgl_dibuat', 'Tanggal Surat Dibuat', 'required|trim');
+        $this->form_validation->set_rules('tgl_masuk', 'Tanggal Surat Masuk', 'required|trim');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 
-    public function update_domisili()
-    {
-        $this->domisili_model->update_domisili();
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Data Domisili Telah Diubah!</div>');
-        redirect('domisili/data_domisili');
+        if ($this->form_validation->run() == false) {
+            $where = array('id_domisili' => $id_domisili);
+            $query = $this->domisili_model->edit_domisili($where, 'domisili');
+            $data['title'] = 'Edit Data Domisili';
+            $data['user'] = $this->db->get_where('user', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+            if ($query->num_rows() > 0) {
+                $data['domisili'] = $query->row();
+                $this->load->view('template/header', $data);
+                $this->load->view('template/sidebar', $data);
+                $this->load->view('data_warga/edit_domisili', $data);
+                $this->load->view('template/footer');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Data Tidak Ditemukan!</div>');
+                redirect('domisili/data_domisili');
+            }
+        } else {
+            $post = $this->input->post(null, TRUE);
+            $this->domisili_model->update_domisili($post);
+
+            if ($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Data Domisili berhasil diubah!</div>');
+            }
+            redirect('domisili/data_domisili');
+        }
     }
 
 

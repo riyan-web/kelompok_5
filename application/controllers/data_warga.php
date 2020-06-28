@@ -106,23 +106,47 @@ class Data_warga extends CI_Controller
     }
     public function edit_ktp($nik)
     {
-        $where = array('nik' => $nik);
-        $data['tb_ktp'] = $this->ktp_model->edit_ktp($where, 'tb_ktp')->result();
-        $data['title'] = 'Edit KTP';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-
-        $this->_rules();
+        $this->form_validation->set_rules('no_kk', 'Nomor Kartu Keluarga', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'required|trim');
+        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
+        $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim');
+        $this->form_validation->set_rules('gol_darah', 'Golongan Darah', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required|trim');
+        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+        $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
+        $this->form_validation->set_rules('sta_perkawinan', 'Status Perkawinan', 'required|trim');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+        $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required|trim');
+        $this->form_validation->set_rules('berlaku', 'Berlaku Hingga', 'required|trim');
+        
         if ($this->form_validation->run() == false) {
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar', $data);
-            $this->load->view('data_warga/edit_ktp', $data);
-            $this->load->view('template/footer');
-        } else {
+            $where = array('nik' => $nik);
+            $query = $this->ktp_model->edit_ktp($where, 'tb_ktp');
+            $data['title'] = 'Edit Kartu Tanda Penduduk';
+            $data['user'] = $this->db->get_where('user', ['email' =>
+            $this->session->userdata('email')])->row_array();
 
-            $this->ktp_model->update_ktp($nik);
+            if ($query->num_rows() > 0) {
+                $data['ktp'] = $query->row();
+                $this->load->view('template/header', $data);
+                $this->load->view('template/sidebar', $data);
+                $this->load->view('data_warga/edit_ktp', $data);
+                $this->load->view('template/footer');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Data Tidak Ditemukan!</div>');
+                redirect('data_warga/ktp');
+            }
+        } else {
+            $post = $this->input->post(null, TRUE);
+            $this->ktp_model->update_ktp($post);
+
+            if($this->db->affected_rows() > 0){
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Kartu Tanda Penduduk Telah Diubah!</div>');
+            Data Kartu Tanda Penduduk berhasil diubah!</div>');
+            }
             redirect('data_warga/ktp');
         }
     }
@@ -206,12 +230,6 @@ class Data_warga extends CI_Controller
     }
     public function edit_kk($noKk)
     {
-        $where = array('noKk' => $noKk);
-        $data['tb_kk'] = $this->kk_model->edit_kk($where, 'tb_kk')->result();
-        $data['title'] = 'Edit Kartu Keluarga';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-
         $this->form_validation->set_rules('nama_kk', 'Nama Kepala Keluarga', 'required|trim');
         $this->form_validation->set_rules('alamat_kk', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('tgl_dikeluarkan', 'Tanggal Dikeluarkan', 'required|trim');
@@ -222,14 +240,32 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('kode_pos', 'Kode POS', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar', $data);
-            $this->load->view('data_warga/edit_kk', $data);
-            $this->load->view('template/footer');
+            $where = array('noKk' => $noKk);
+            $query = $this->kk_model->edit_kk($where, 'tb_kk');
+            $data['title'] = 'Edit Kartu Keluarga';
+            $data['user'] = $this->db->get_where('user', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+
+            if ($query->num_rows() > 0) {
+                $data['kk'] = $query->row();
+                $this->load->view('template/header', $data);
+                $this->load->view('template/sidebar', $data);
+                $this->load->view('data_warga/edit_kk', $data);
+                $this->load->view('template/footer');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Data Tidak Ditemukan!</div>');
+                redirect('data_warga/kartu_keluarga');
+            }
         } else {
-            $this->kk_model->update_kk($noKk);
+            $post = $this->input->post(null, TRUE);
+            $this->kk_model->update_kk($post);
+
+            if($this->db->affected_rows() > 0){
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Data Kartu Keluarga berhasil diubah!</div>');
+            }
             redirect('data_warga/kartu_keluarga');
         }
     }

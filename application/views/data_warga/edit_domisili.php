@@ -54,18 +54,15 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
-                <form action="<?= base_url('domisili/update_domisili'); ?>" method="post">
+                <form action="" method="post">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>ID Domisili</label>
-                                    <input type="text" class="form-control" name="id_domisili" value="<?php echo $domisili['id_domisili'] ?>" style="width: 100%;" readonly>
-                                </div>
+                                <input type="hidden" class="form-control" name="id_domisili" value="<?php echo $domisili->id_domisili ?>" style="width: 100%;" readonly>
                                 <div class="form-group">
                                     <label>Nomor Kartu Penduduk</label>
                                     <select name="nik" class="form-control select2" style="width: 100%;">
-                                        <option value=""><?php echo $domisili['nik']; ?></option>
+                                        <option value=""><?php echo $domisili->nik; ?></option>
                                         <?php
                                         foreach ($rt as $r) { ?>
                                             <option value="<?= $r->nik ?>"><?= $r->nik . " - " . $r->nama  ?></option>
@@ -75,18 +72,18 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 </div>
                                 <div class="form-group">
                                     <label>Alamat AsaL</label>
-                                    <input type="text" class="form-control" name="alamat_asal" value="<?php echo $domisili['alamat_asal'] ?>" style="width: 100%;">
-
+                                    <input type="text" class="form-control" name="alamat_asal" value="<?php echo $this->input->post('alamat_asal') ?? $domisili->alamat_asal ?>" style="width: 100%;">
+                                    <?= form_error('alamat_asal', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Pindah Ke</label>
-                                    <input type="text" name="pindah_ke" class="form-control" value="<?php echo $domisili['pindah_ke'] ?>" style="width: 100%;">
-
+                                    <input type="text" name="pindah_ke" class="form-control" value="<?php echo $this->input->post('pindah_ke') ?? $domisili->pindah_ke ?>" style="width: 100%;">
+                                    <?= form_error('pindah_ke', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Alasan Pindah</label>
-                                    <input type="text" name="alasan_pindah" class="form-control" value="<?php echo $domisili['alasan_pindah'] ?>" style="width: 100%;">
-
+                                    <input type="text" name="alasan_pindah" class="form-control" value="<?php echo $this->input->post('alasan_pindah') ?? $domisili->alasan_pindah ?>" style="width: 100%;">
+                                    <?= form_error('alasan_pindah', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -96,18 +93,18 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <!-- /.form-group -->
                                 <div class="form-group">
                                     <label>Tanggal Surat Dibuat</label>
-                                    <input type="text" name="tgl_dibuat" class="form-control" value="<?php echo $domisili['tgl_surat_dibuat'] ?>" style="width: 100%;">
-
+                                    <input type="text" name="tgl_dibuat" class="form-control" value="<?php echo $this->input->post('tgl_dibuat') ?? $domisili->tgl_surat_dibuat ?>" style="width: 100%;">
+                                    <?= form_error('tgl_dibuat', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Tanggal Surat Masuk</label>
-                                    <input type="text" name="tgl_masuk" class="form-control" value="<?php echo $domisili['tgl_surat_masuk'] ?>" style="width: 100%;">
-
+                                    <input type="text" name="tgl_masuk" class="form-control" value="<?php echo $this->input->post('tgl_masuk') ?? $domisili->tgl_surat_masuk ?>" style="width: 100%;">
+                                    <?= form_error('tgl_masuk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <input type="text" name="keterangan" class="form-control" value="<?php echo $domisili['keterangan'] ?>" style="width: 100%;">
-
+                                    <input type="text" name="keterangan" class="form-control" value="<?php echo $this->input->post('keterangan') ?? $domisili->keterangan ?>" style="width: 100%;">
+                                    <?= form_error('keterangan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
 
                                 <div class="form-group">

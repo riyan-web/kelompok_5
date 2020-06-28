@@ -19,7 +19,7 @@ $user = $this->db->query($query_user)->result();
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/admin/data_rt">Data Ketua RT</a></li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/Rt/data_ketua_rt">Data Ketua RT</a></li>
                         <li class="breadcrumb-item active">Tambah Ketua RT</li>
                     </ol>
                 </div>
@@ -42,7 +42,7 @@ $user = $this->db->query($query_user)->result();
                 </div>
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
-                <form action="<?= base_url('admin/tambah_data_ketuart'); ?>" method="post">
+                <form action="<?= base_url('Rt/tambah_data_ketuart'); ?>" method="post">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -53,11 +53,11 @@ $user = $this->db->query($query_user)->result();
                                         <?php
                                         foreach ($user as $u) { ?>
                                             <option value="<?= $u->id_user ?>"><?= $u->nama ?></option>
-
                                         <?php } ?>
                                     </select>
+                                    <?= form_error('id_user', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     <br>
-                                    <a href="<?= base_url('login/registrasi') ?>" class="btn btn-success">Tambah User</a>
+                                    <a href="<?= base_url('Rt/registrasi') ?>" class="btn btn-success">Tambah User</a>
                                 </div>
                                 <div class="form-group">
                                     <label>Pilih KTP</label>
@@ -66,11 +66,11 @@ $user = $this->db->query($query_user)->result();
                                         <?php
                                         foreach ($tb_ktp as $ktp) { ?>
                                             <option value="<?= $ktp->nik ?>"><?= $ktp->nama . " - " . $ktp->nik ?></option>
-
                                         <?php } ?>
                                     </select>
+                                    <?= form_error('nik', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     <br>
-                                    <a href="<?= base_url('data_warga/tambah_ktp') ?>" class="btn btn-success">Tambah KTP</a>
+                                    <a href="<?= base_url('Rt/tambah_ktp_ketua') ?>" class="btn btn-success">Tambah KTP</a>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Tambah</button>
