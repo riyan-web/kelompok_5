@@ -86,7 +86,7 @@ class Data_warga extends CI_Controller
                     }
                 } else {
                     $error = $this->upload->display_errors();
-                    $this->session->set_flashdata('message', 'error', $error);
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error! Cek Kembali File Upload</div>', $error);
                     redirect('data_warga/tambah_ktp');
                 }
             } else {
@@ -108,7 +108,6 @@ class Data_warga extends CI_Controller
     }
     public function edit_ktp($nik)
     {
-        $this->form_validation->set_rules('no_kk', 'Nomor Kartu Keluarga', 'required|trim');
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'required|trim');
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
@@ -123,9 +122,10 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required|trim');
         $this->form_validation->set_rules('berlaku', 'Berlaku Hingga', 'required|trim');
 
+        $where = array('nik' => $nik);
+        $query = $this->ktp_model->edit_ktp($where, 'tb_ktp');
+
         if ($this->form_validation->run() == false) {
-            $where = array('nik' => $nik);
-            $query = $this->ktp_model->edit_ktp($where, 'tb_ktp');
             $data['title'] = 'Edit Kartu Tanda Penduduk';
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
@@ -142,9 +142,46 @@ class Data_warga extends CI_Controller
                 redirect('data_warga/ktp');
             }
         } else {
-            $post = $this->input->post(null, TRUE);
-            $this->ktp_model->update_ktp($post);
+            $data['ktp_image'] = $query->row_array();
+            $upload_image = $_FILES['image']['name'];
 
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']      = '2048';
+                $config['upload_path']     = './assets/img/ktp';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $old_image = $data['ktp_image']['gambar_ktp'];
+                    if ($old_image != 'default_ktp.jpg') {
+                        unlink(FCPATH . 'assets/img/ktp/' . $old_image);
+                    }
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('gambar_ktp', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+            $post = $this->input->post(null, TRUE);
+            $params['nama'] = $post['nama'];
+            $params['tempatLahir'] = $post['tmp_lahir'];
+            $params['tanggalLahir'] = $post['tgl_lahir'];
+            $params['jenisKelamin'] = $post['jk'];
+            $params['golDarah'] = $post['gol_darah'];
+            $params['alamat'] = $post['alamat'];
+            $params['kodeRt'] = $post['kode_rt'];
+            $params['kelurahan'] = $post['kelurahan'];
+            $params['kecamatan'] = $post['kecamatan'];
+            $params['agama'] = $post['agama'];
+            $params['statusPerkawinan'] = $post['sta_perkawinan'];
+            $params['pekerjaan'] = $post['pekerjaan'];
+            $params['kewarganegaraan'] = $post['kewarganegaraan'];
+            $params['berlakuHingga'] = $post['berlaku'];
+
+
+            $this->db->where('nik', $post['nik']);
+            $this->db->update('tb_ktp', $params);
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Data Kartu Tanda Penduduk berhasil diubah!</div>');

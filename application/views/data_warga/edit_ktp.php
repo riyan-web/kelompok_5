@@ -9,17 +9,6 @@ $query_rt = "SELECT `tb_ktp`.`nik`, `tb_ketuart`.`nik`, `user_id`, `tb_rt_rw`.`k
             ";
 
 $rt_user = $this->db->query($query_rt)->row_array();
-$rt_user_coba = $rt_user['kodeRt'];
-
-$query_kodeRt = "SELECT * FROM `tb_kk` WHERE `kodeRT` = $rt_user_coba ";
-$rt = $this->db->query($query_kodeRt)->result();
-
-
-
-
-
-
-
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -69,15 +58,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 </div>
                                 <div class="form-group">
                                     <label>Nomor Kartu Keluarga</label>
-                                    <select name="no_kk" class="form-control select2" style="width: 100%;">
-                                        <option value=""><?php echo $ktp->noKk; ?></option>
-                                        <?php
-                                        foreach ($rt as $r) { ?>
-                                            <option value="<?= $r->noKk ?>"><?= $r->noKk . " - " . $r->namaKk  ?></option>
-                                            <?php  ?>
-
-                                        <?php } ?>
-                                    </select>
+                                    <input type="text" class="form-control" name="no_kk" value="<?php echo $ktp->noKk ?>" style="width: 100%;" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Nama</label>
@@ -172,6 +153,21 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <input type="text" name="berlaku" class="form-control" style="width: 100%;" value="<?php echo $this->input->post('berlaku') ?? $ktp->berlakuHingga ?>">
                                     <?= form_error('berlaku', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
+                                <div class="form-group-row">
+                                    <label>Ganti Foto</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img src="<?= base_url('assets/img/ktp/') . $ktp->gambar_ktp ?>" class="img-thumbnail">
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="file" name="image" id="image">
+                                                <small>Biarkan Kosong Jika Gambar Tidak Mau Diganti</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Edit</button>

@@ -179,6 +179,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <div class="forrm-group">
                                     <label>Gambar KTP</label>
                                     <input type="file" name="image" class="form-control">
+                                    <small>Biarkan Kosong Jika Anda Tidak Memiliki Gambar KTP Tersebut</small>
                                 </div>
                                 <br>
                                 <div class="form-group">

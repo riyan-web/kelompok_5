@@ -23,6 +23,20 @@ class Domisili extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function detail_domisili($id_domisili)
+    {
+        $where = array('id_domisili' => $id_domisili);
+        $data['tb_domisili'] = $this->domisili_model->edit_domisili($where, 'domisili')->row_array();
+        $data['title'] = 'Detail Data Domisili';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/detail_domisili', $data);
+        $this->load->view('template/footer');
+    }
+
     public function tambah_data_domisili()
     {
         $this->form_validation->set_rules(
@@ -69,7 +83,7 @@ class Domisili extends CI_Controller
                     }
                 } else {
                     $error = $this->upload->display_errors();
-                    $this->session->set_flashdata('message', 'error', $error);
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Cek Kembali File Upload</div>', $error);
                     redirect('domisili/tambah_data_domisili');
                 }
             } else {
@@ -93,8 +107,6 @@ class Domisili extends CI_Controller
     }
     public function edit_domisili($id_domisili)
     {
-
-        $this->form_validation->set_rules('nik', 'Nomor Induk Kependudukan', 'required|trim');
         $this->form_validation->set_rules('alamat_asal', 'Alamat Asal', 'required|trim');
         $this->form_validation->set_rules('pindah_ke', 'Pindah Ke', 'required|trim');
         $this->form_validation->set_rules('alasan_pindah', 'Alasan Pindah', 'required|trim');
@@ -102,9 +114,10 @@ class Domisili extends CI_Controller
         $this->form_validation->set_rules('tgl_masuk', 'Tanggal Surat Masuk', 'required|trim');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 
+        $where = array('id_domisili' => $id_domisili);
+        $query = $this->domisili_model->edit_domisili($where, 'domisili');
+
         if ($this->form_validation->run() == false) {
-            $where = array('id_domisili' => $id_domisili);
-            $query = $this->domisili_model->edit_domisili($where, 'domisili');
             $data['title'] = 'Edit Data Domisili';
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
@@ -121,13 +134,43 @@ class Domisili extends CI_Controller
                 redirect('domisili/data_domisili');
             }
         } else {
-            $post = $this->input->post(null, TRUE);
-            $this->domisili_model->update_domisili($post);
+            $data['domisili'] = $query->row_array();
+            $upload_image = $_FILES['image']['name'];
 
-            if ($this->db->affected_rows() > 0) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data Domisili berhasil diubah!</div>');
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']      = '2048';
+                $config['upload_path']     = './assets/img/domisili';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $old_image = $data['domisili']['surat_domisili'];
+                    if ($old_image != 'default_domisili.jpg') {
+                        unlink(FCPATH . 'assets/img/domisili/' . $old_image);
+                    }
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('surat_domisili', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
             }
+            $post = $this->input->post(null, TRUE);
+            $params['id_domisili'] = $post['id_domisili'];
+            $params['alamat_asal'] = $post['alamat_asal'];
+            $params['pindah_ke'] = $post['pindah_ke'];
+            $params['alasan_pindah'] = $post['alasan_pindah'];
+            $params['tgl_surat_dibuat'] = $post['tgl_dibuat'];
+            $params['tgl_surat_masuk'] = $post['tgl_masuk'];
+            $params['keterangan'] = $post['keterangan'];
+
+            $this->db->where('id_domisili', $post['id_domisili']);
+            $this->db->update('domisili', $params);
+
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Domisili Berhasil Diubah!</div>'
+            );
             redirect('domisili/data_domisili');
         }
     }

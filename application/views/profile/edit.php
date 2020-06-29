@@ -47,7 +47,7 @@
                     <input type="file" name="image" id="image">
                   </div>
                 </div>
-              </div>
+              </div> 
             </div>
             <div class="form-group row justify-content-end">
               <div class="col-sm-10">
@@ -62,3 +62,47 @@
   </body>
 
   </html>
+
+  $config['upload_path']          = './assets/img/domisili';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['file_name']            = 'domisili-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+            $config['max_size']             = 2048; // 2MB
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+            $this->load->library('upload', $config);
+
+            if (@$_FILES['image']['name'] != null) {
+                if ($this->upload->do_upload('image')) {
+
+                    $where = array('id_domisili' => $id_domisili);
+                    $query = $this->domisili_model->edit_domisili($where, 'domisili');
+                    $item = $query->row();
+                    if($item->surat_domisili != null){
+                        $target_file = './assets/img/domisili'.$item->surat_domisili;
+                        unlink($target_file);
+                    }
+                    $post['image'] = $this->upload->data('file_name');
+                    $this->domisili_model->update_domisili($post);
+                    if ($this->db->affected_rows() > 0) {
+                        $this->session->set_flashdata(
+                            'message',
+                            '<div class="alert alert-success" role="alert">Data Domisili Berhasil Diubah</div>'
+                        );
+                        redirect('domisili/data_domisili');
+                    }
+                } else {
+                    $error = $this->upload->display_errors();
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Cek Kembali File Upload</div>', $error);
+                    redirect('domisili/tambah_data_domisili');
+                }
+            } else {
+                $post['image'] = 'null';
+                $this->domisili_model->update_domisili($post);
+                if ($this->db->affected_rows() > 0) {
+                    $this->session->set_flashdata(
+                        'message',
+                        '<div class="alert alert-success" role="alert">Data Domisili Ditambahkan.</div>'
+                    );
+                    redirect('domisili/data_domisili');
+                }
+            }

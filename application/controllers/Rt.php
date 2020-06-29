@@ -128,7 +128,6 @@ class Rt extends CI_Controller
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
         $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required|trim');
         $this->form_validation->set_rules('berlaku', 'Berlaku Hingga', 'required|trim');
-        // $this->form_validation->set_rules('gambar_ktp', 'Gambar KTP', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah KTP Ketua RT';

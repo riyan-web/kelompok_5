@@ -47,7 +47,7 @@ class Ktp_model extends CI_model
         $this->db->delete($table);
     }
 
-   
+
 
     function edit_ktp($where, $table)
     {
@@ -56,7 +56,6 @@ class Ktp_model extends CI_model
 
     function update_ktp($post)
     {
-        $params['noKk'] = $post['no_kk'];
         $params['nama'] = $post['nama'];
         $params['tempatLahir'] = $post['tmp_lahir'];
         $params['tanggalLahir'] = $post['tgl_lahir'];

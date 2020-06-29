@@ -106,8 +106,9 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('keterangan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="forrm-group">
-                                    <label>Gambar KTP</label>
+                                    <label>Gambar Surat Domisili</label>
                                     <input type="file" name="image" class="form-control">
+                                    <small>Biarkan Kosong Jika Anda Tidak Mempunyai Gambar Surat Domisili Tersebut</small>
                                 </div>
                                 <br>
                                 <div class="form-group">

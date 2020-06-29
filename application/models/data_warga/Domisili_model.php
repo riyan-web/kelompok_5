@@ -41,6 +41,7 @@ class Domisili_model extends CI_model
 
     function update_domisili($post)
     {
+       
         $params['id_domisili'] = $post['id_domisili'];
         $params['nik'] = $post['nik'];
         $params['alamat_asal'] = $post['alamat_asal'];
@@ -49,6 +50,10 @@ class Domisili_model extends CI_model
         $params['tgl_surat_dibuat'] = $post['tgl_dibuat'];
         $params['tgl_surat_masuk'] = $post['tgl_masuk'];
         $params['keterangan'] = $post['keterangan'];
+      
+        if($post['image'] != null){
+            $params['surat_domisili'] = $post['image'];
+        }
 
 
         $this->db->where('id_domisili', $post['id_domisili']);

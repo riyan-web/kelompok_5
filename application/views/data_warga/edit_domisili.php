@@ -27,12 +27,12 @@ $rt = $this->db->query($query_kodeRt)->result();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Warga</h1>
+                    <h1>Data Warga NON Domisili</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Advanced Form</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/domisili/data_domisili">Data NON Domisili</a></li>
+                        <li class="breadcrumb-item active">Tambah Data NON Domisili</li>
                     </ol>
                 </div>
             </div>
@@ -54,21 +54,14 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <input type="hidden" class="form-control" name="id_domisili" value="<?php echo $domisili->id_domisili ?>" style="width: 100%;" readonly>
                                 <div class="form-group">
                                     <label>Nomor Kartu Penduduk</label>
-                                    <select name="nik" class="form-control select2" style="width: 100%;">
-                                        <option value=""><?php echo $domisili->nik; ?></option>
-                                        <?php
-                                        foreach ($rt as $r) { ?>
-                                            <option value="<?= $r->nik ?>"><?= $r->nik . " - " . $r->nama  ?></option>
-
-                                        <?php } ?>
-                                    </select>
+                                    <input type="text" class="form-control" name="nik" value="<?php echo $domisili->nik ?>" style="width: 100%;" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Alamat AsaL</label>
@@ -106,21 +99,37 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <input type="text" name="keterangan" class="form-control" value="<?php echo $this->input->post('keterangan') ?? $domisili->keterangan ?>" style="width: 100%;">
                                     <?= form_error('keterangan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Ganti Foto</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img src="<?= base_url('assets/img/domisili/') . $domisili->surat_domisili ?>" class="img-thumbnail">
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="file" name="image" id="image">
+                                                <small>Biarkan Kosong Jika Gambar Tidak Mau Diganti</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Edit</button>
+                                    <button type="reset" class="btn btn-warning">Reset</button>
                                 </div>
-                                <!-- /.form-group -->
                             </div>
-                            <!-- /.col -->
+                            <!-- /.form-group -->
                         </div>
-                        <!-- /.row -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.card -->
-                </form>
-                <!-- form -->
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    <!-- /.row -->
+            </div>
+            <!-- /.card -->
+            </form>
+            <!-- form -->
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
