@@ -25,7 +25,12 @@ class Domisili extends CI_Controller
 
     public function tambah_data_domisili()
     {
-        $this->form_validation->set_rules('nik', 'Nomor Induk Kependudukan', 'required|trim');
+        $this->form_validation->set_rules(
+            'nik',
+            'Nomor Induk Kependudukan',
+            'required|trim|is_unique[domisili.nik]',
+            ['is_unique' => 'Nomor NIK Telah di Gunakan!']
+        );
         $this->form_validation->set_rules('alamat_asal', 'Alamat Asal', 'required|trim');
         $this->form_validation->set_rules('pindah_ke', 'Pindah Ke', 'required|trim');
         $this->form_validation->set_rules('alasan_pindah', 'Alasan Pindah', 'required|trim');
@@ -34,7 +39,7 @@ class Domisili extends CI_Controller
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Data Domisili';
+            $data['title'] = 'Tambah Data Domisili';
             $data['user'] = $this->db->get_where('user', ['email' =>
             $this->session->userdata('email')])->row_array();
 
@@ -43,23 +48,41 @@ class Domisili extends CI_Controller
             $this->load->view('data_warga/tambah_data_domisili', $data);
             $this->load->view('template/footer');
         } else {
-            $data = [
-                'nik' => htmlspecialchars($this->input->post('nik', true)),
-                'alamat_asal' => htmlspecialchars($this->input->post('alamat_asal', true)),
-                'pindah_ke' => htmlspecialchars($this->input->post('pindah_ke', true)),
-                'alasan_pindah' => htmlspecialchars($this->input->post('alasan_pindah', true)),
-                'tgl_surat_dibuat' => htmlspecialchars($this->input->post('tgl_dibuat', true)),
-                'tgl_surat_masuk' => htmlspecialchars($this->input->post('tgl_masuk', true)),
-                'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
-            ];
+            $config['upload_path']          = './assets/img/domisili';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['file_name']            = 'domisili-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+            $config['max_size']             = 2048; // 2MB
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+            $this->load->library('upload', $config);
 
-            $this->db->insert('domisili', $data);
-
-            $this->session->set_flashdata(
-                'message',
-                '<div class="alert alert-success" role="alert">Data anda ditambahkan.</div>'
-            );
-            redirect('domisili/data_domisili');
+            if (@$_FILES['image']['name'] != null) {
+                if ($this->upload->do_upload('image')) {
+                    $post['image'] = $this->upload->data('file_name');
+                    $this->domisili_model->input_domisili($post);
+                    if ($this->db->affected_rows() > 0) {
+                        $this->session->set_flashdata(
+                            'message',
+                            '<div class="alert alert-success" role="alert">Data Domisili Ditambahkan.</div>'
+                        );
+                        redirect('domisili/data_domisili');
+                    }
+                } else {
+                    $error = $this->upload->display_errors();
+                    $this->session->set_flashdata('message', 'error', $error);
+                    redirect('domisili/tambah_data_domisili');
+                }
+            } else {
+                $post['image'] = 'default_domisili.jpg';
+                $this->domisili_model->input_domisili($post);
+                if ($this->db->affected_rows() > 0) {
+                    $this->session->set_flashdata(
+                        'message',
+                        '<div class="alert alert-success" role="alert">Data Domisili Ditambahkan.</div>'
+                    );
+                    redirect('domisili/data_domisili');
+                }
+            }
         }
     }
     function hapus_domisili($id_domisili)
@@ -131,5 +154,4 @@ class Domisili extends CI_Controller
         $this->dompdf->render();
         $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
     }
-
 }

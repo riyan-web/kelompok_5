@@ -11,9 +11,29 @@ class Ktp_model extends CI_model
         return $this->db->get();
     }
 
-    function input_ktp($data, $table)
+    function input_ktp($post)
     {
-        $this->db->insert($table, $data);
+        $data = [
+            'nik' => htmlspecialchars($this->input->post('nik', true)),
+            'noKk' => htmlspecialchars($this->input->post('no_kk', true)),
+            'nama' => htmlspecialchars($this->input->post('nama', true)),
+            'tempatLahir' => htmlspecialchars($this->input->post('tmp_lahir', true)),
+            'tanggalLahir' => htmlspecialchars($this->input->post('tgl_lahir', true)),
+            'jenisKelamin' => htmlspecialchars($this->input->post('jk', true)),
+            'golDarah' => htmlspecialchars($this->input->post('gol_darah', true)),
+            'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+            'kodeRt' => htmlspecialchars($this->input->post('kode_rt', true)),
+            'kelurahan' => htmlspecialchars($this->input->post('kelurahan', true)),
+            'kecamatan' => htmlspecialchars($this->input->post('kecamatan', true)),
+            'agama' => htmlspecialchars($this->input->post('agama', true)),
+            'statusPerkawinan' => htmlspecialchars($this->input->post('sta_perkawinan', true)),
+            'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+            'kewarganegaraan' => htmlspecialchars($this->input->post('kewarganegaraan', true)),
+            'berlakuHingga' => htmlspecialchars($this->input->post('berlaku', true)),
+            'gambar_ktp' => $post['image'],
+            'created'     =>  date("Y-m-d")
+        ];
+        $this->db->insert('tb_ktp', $data);
     }
 
     function getAllKtp()
@@ -26,6 +46,8 @@ class Ktp_model extends CI_model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+   
 
     function edit_ktp($where, $table)
     {

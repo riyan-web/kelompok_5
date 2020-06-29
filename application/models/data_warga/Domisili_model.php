@@ -12,9 +12,20 @@ class Domisili_model extends CI_model
         return $this->db->get();
     }
 
-    function input_domisili($data, $table)
+    function input_domisili($post)
     {
-        $this->db->insert($table, $data);
+        $data = [
+            'nik' => htmlspecialchars($this->input->post('nik', true)),
+            'alamat_asal' => htmlspecialchars($this->input->post('alamat_asal', true)),
+            'pindah_ke' => htmlspecialchars($this->input->post('pindah_ke', true)),
+            'alasan_pindah' => htmlspecialchars($this->input->post('alasan_pindah', true)),
+            'tgl_surat_dibuat' => htmlspecialchars($this->input->post('tgl_dibuat', true)),
+            'tgl_surat_masuk' => htmlspecialchars($this->input->post('tgl_masuk', true)),
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'surat_domisili' => $post['image']
+        ];
+
+        $this->db->insert('domisili', $data);
     }
 
     function hapus_domisili($where, $table)

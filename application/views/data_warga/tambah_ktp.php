@@ -176,7 +176,11 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <input type="text" name="berlaku" class="form-control" style="width: 100%;">
                                     <?= form_error('berlaku', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
-
+                                <div class="forrm-group">
+                                    <label>Gambar KTP</label>
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Tambah</button>
