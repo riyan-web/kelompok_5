@@ -41,9 +41,6 @@ class admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
-	public function tambah_rt()
-	{
-	}
 	public function data_kk_warga()
 	{
 		$data['title'] = 'Admin - Data Kartu Keluarga';

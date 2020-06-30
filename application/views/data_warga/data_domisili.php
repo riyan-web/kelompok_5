@@ -76,7 +76,7 @@ $domisili = $this->db->query($query_kk)->result();
                                         <th><?php echo $dom->tgl_surat_masuk ?></th>
                                         <th>
                                             <button class="btn-lg warning"><?php echo anchor('domisili/edit_domisili/' . $dom->id_domisili, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('domisili/hapus_domisili/' . $dom->id_domisili, 'Hapus'); ?></button>
+                                            <button class="btn-lg danger hapus"><?php echo anchor('domisili/hapus_domisili/' . $dom->id_domisili, 'Hapus'); ?></button>
                                             <button class="btn-lg warning"><?php echo anchor('domisili/detail_domisili/' . $dom->id_domisili, 'Detail'); ?></button>
                                         </th>
                                     </tr>

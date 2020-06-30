@@ -144,6 +144,16 @@ class Rt extends CI_Controller
             redirect('Rt/data_ketua_rt');
         }
     }
+    public function hapus_ketua_rt($id_ketua_rt)
+    {
+        $where = array('id_ketua_rt' => $id_ketua_rt);
+        $this->rt_model->hapus_ketua_rt($where, 'tb_ketuart');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">Data Ketua RT Berhasil Dihapus</div>'
+        );
+        redirect('rt/data_ketua_rt');
+    }
 
     public function registrasi()
     {

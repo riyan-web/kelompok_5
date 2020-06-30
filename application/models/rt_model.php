@@ -32,6 +32,13 @@ class Rt_model extends CI_model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    function hapus_ketua_rt($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
     function edit_rt($where, $table)
     {
         return $this->db->get_where($table, $where);

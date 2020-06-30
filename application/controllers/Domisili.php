@@ -103,6 +103,10 @@ class Domisili extends CI_Controller
     {
         $where = array('id_domisili' => $id_domisili);
         $this->domisili_model->hapus_domisili($where, 'domisili');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">Data Warga Non Domisili Berhasil Dihapus</div>'
+        );
         redirect('domisili/data_domisili');
     }
     public function edit_domisili($id_domisili)

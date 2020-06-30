@@ -74,7 +74,7 @@
                                                 <th><?php echo $ktp->pekerjaan ?></th>
                                                 <th>
                                                     <button class="btn-lg warning"><?php echo anchor('data_warga/edit_ktp/' . $ktp->nik, 'Edit'); ?></button>
-                                                    <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_ktp/' . $ktp->nik, 'Hapus'); ?></button>
+                                                    <button class="btn-lg danger hapus"><?php echo anchor('data_warga/hapus_ktp/' . $ktp->nik, 'Hapus'); ?></button>
                                                     <button class="btn-lg danger"><?php echo anchor('data_warga/detail_ktp/' . $ktp->nik, 'detail'); ?></button>
                                                 </th>
                                             </tr>

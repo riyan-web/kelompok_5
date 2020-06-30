@@ -37,7 +37,6 @@
                                     <th>Nama</th>
                                     <th>No Induk Kependudukan</th>
                                     <th>Email</th>
-                                    <th>Password</th>
                                     <th>Ketua RT</th>
                                     <th>RW</th>
                                     <th style="width:150px;">Action</th>
@@ -51,13 +50,10 @@
                                         <th><?php echo $rt->nama ?></th>
                                         <th><?php echo $rt->nik ?></th>
                                         <th><?php echo $rt->email ?></th>
-                                        <th><?php echo $rt->password ?></th>
                                         <th><?php echo $rt->rt ?></th>
                                         <th><?php echo $rt->rw ?></th>
                                         <th>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/edit_kk/' . $rt->noKk, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_kk/' . $rt->noKk, 'Hapus'); ?></button>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/detail_kk/' . $rt->noKk, 'Detail'); ?></button>
+                                            <button class="btn-lg danger hapus"><?php echo anchor('rt/hapus_ketua_rt/' . $rt->id_ketua_rt, 'Hapus'); ?></button>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

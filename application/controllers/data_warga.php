@@ -104,6 +104,10 @@ class Data_warga extends CI_Controller
     {
         $where = array('nik' => $nik);
         $this->ktp_model->hapus_ktp($where, 'tb_ktp');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">Data Kartu Tanda Penduduk Berhasil Dihapus</div>'
+        );
         redirect('data_warga/ktp');
     }
     public function edit_ktp($nik)
@@ -258,13 +262,17 @@ class Data_warga extends CI_Controller
                 'message',
                 '<div class="alert alert-success" role="alert">Data anda ditambahkan</div>'
             );
-            redirect('data_warga/tambah_kk');
+            redirect('data_warga/kartu_keluarga');
         }
     }
     public function hapus_kk($noKk)
     {
         $where = array('noKk' => $noKk);
         $this->kk_model->hapus_kk($where, 'tb_kk');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">Data Kartu keluarga Berhasil Dihapus</div>'
+        );
         redirect('data_warga/kartu_keluarga');
     }
     public function edit_kk($noKk)
