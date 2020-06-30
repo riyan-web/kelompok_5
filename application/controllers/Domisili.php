@@ -194,11 +194,11 @@ class Domisili extends CI_Controller
 
     public function cetak_domisili()
     {
-        $this->load->view('');
-        $html = $this->output->get_output();
-        $this->load->library('dompdf_gen');
-        $this->dompdf->load_html($html);
-        $this->dompdf->render();
-        $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
+          
+            $html = $this->output->get_output();
+            $this->load->library('dompdf_gen');
+            $this->dompdf->load_html($html);
+            $this->dompdf->render();
+            $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
     }
 }
