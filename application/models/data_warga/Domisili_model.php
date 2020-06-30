@@ -22,7 +22,8 @@ class Domisili_model extends CI_model
             'tgl_surat_dibuat' => htmlspecialchars($this->input->post('tgl_dibuat', true)),
             'tgl_surat_masuk' => htmlspecialchars($this->input->post('tgl_masuk', true)),
             'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
-            'surat_domisili' => $post['image']
+            'surat_domisili' => $post['image'],
+            'created'     =>  date("Y-m-d")
         ];
 
         $this->db->insert('domisili', $data);
@@ -41,7 +42,7 @@ class Domisili_model extends CI_model
 
     function update_domisili($post)
     {
-       
+
         $params['id_domisili'] = $post['id_domisili'];
         $params['nik'] = $post['nik'];
         $params['alamat_asal'] = $post['alamat_asal'];
@@ -50,8 +51,8 @@ class Domisili_model extends CI_model
         $params['tgl_surat_dibuat'] = $post['tgl_dibuat'];
         $params['tgl_surat_masuk'] = $post['tgl_masuk'];
         $params['keterangan'] = $post['keterangan'];
-      
-        if($post['image'] != null){
+
+        if ($post['image'] != null) {
             $params['surat_domisili'] = $post['image'];
         }
 

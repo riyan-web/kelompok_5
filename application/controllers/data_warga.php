@@ -244,16 +244,17 @@ class Data_warga extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $data = [
-                'noKk' => htmlspecialchars($this->input->post('no_kk', true)),
-                'namaKk' => htmlspecialchars($this->input->post('nama_kk', true)),
-                'alamat' => htmlspecialchars($this->input->post('alamat', true)),
-                'kelurahan' => htmlspecialchars($this->input->post('kelurahan', true)),
-                'kecamatan' => htmlspecialchars($this->input->post('kecamatan', true)),
-                'kabupaten' => htmlspecialchars($this->input->post('kabupaten', true)),
-                'kodepos' => htmlspecialchars($this->input->post('kode_pos', true)),
-                'provinsi' => htmlspecialchars($this->input->post('provinsi', true)),
+                'noKk'              => htmlspecialchars($this->input->post('no_kk', true)),
+                'namaKk'            => htmlspecialchars($this->input->post('nama_kk', true)),
+                'alamat'            => htmlspecialchars($this->input->post('alamat', true)),
+                'kelurahan'         => htmlspecialchars($this->input->post('kelurahan', true)),
+                'kecamatan'         => htmlspecialchars($this->input->post('kecamatan', true)),
+                'kabupaten'         => htmlspecialchars($this->input->post('kabupaten', true)),
+                'kodepos'           => htmlspecialchars($this->input->post('kode_pos', true)),
+                'provinsi'          => htmlspecialchars($this->input->post('provinsi', true)),
                 'dikeluarkanTanggal' => htmlspecialchars($this->input->post('tgl_dikeluarkan', true)),
-                'kodeRt' => htmlspecialchars($this->input->post('kode_rt', true))
+                'kodeRt'            => htmlspecialchars($this->input->post('kode_rt', true)),
+                'created'           => date("Y-m-d")
             ];
 
             $this->db->insert('tb_kk', $data);
