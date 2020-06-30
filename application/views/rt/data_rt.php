@@ -48,9 +48,7 @@
                                         <th><?php echo $rt->rw ?></th>
                                         <th>
                                             <button class="btn-lg warning"><?php echo anchor('rt/edit_data_rt/' . $rt->kodeRt, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('rt/hapus_data_rt/' . $rt->kodeRt, 'Hapus'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('rt/tambah_data_rt/' . $rt->kodeRt, 'Tambah'); ?></button>
-
+                                            <button class="btn-lg danger hapus"><?php echo anchor('rt/hapus_data_rt/' . $rt->kodeRt, 'Hapus'); ?></button>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

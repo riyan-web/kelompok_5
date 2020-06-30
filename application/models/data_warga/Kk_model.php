@@ -39,7 +39,6 @@ class Kk_model extends CI_model
         $params['dikeluarkanTanggal'] = $post['tgl_dikeluarkan'];
         $params['kodeRt'] = $post['kode_rt'];
 
-
         $this->db->where('noKk', $post['no_kk']);
         $this->db->update('tb_kk', $params);
     }

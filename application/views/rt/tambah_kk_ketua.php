@@ -70,7 +70,7 @@
                                     </select>
                                     <?= form_error('kode_rt', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     <br>
-                                    <a href="<?= base_url('Rt/tambah_rt') ?>" class="btn btn-success">Tambah RT</a>
+                                    <a href="<?= base_url('Rt/tambah_data_rt') ?>" class="btn btn-success">Tambah RT</a>
                                 </div>
 
 

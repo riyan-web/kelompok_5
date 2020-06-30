@@ -63,7 +63,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Kepala Keluarga</label>
+                                    <label>Nama Kepala Keluarga</label> 
                                     <input type="text" name="nama_kk" class="form-control" value="<?php echo $this->input->post('nama_kk') ?? $kk->namaKk ?>" style="width: 100%;">
                                     <?= form_error('nama_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>

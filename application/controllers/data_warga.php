@@ -308,26 +308,4 @@ class Data_warga extends CI_Controller
             redirect('data_warga/kartu_keluarga');
         }
     }
-
-    public function _rules()
-    {
-        $this->form_validation->set_rules('no_kk', 'Nomor Kartu Keluarga', 'required|trim');
-        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'required|trim');
-        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
-        $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim');
-        $this->form_validation->set_rules('gol_darah', 'Golongan Darah', 'required|trim');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-        $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required|trim');
-        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
-        $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
-        $this->form_validation->set_rules('sta_perkawinan', 'Status Perkawinan', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required|trim');
-        $this->form_validation->set_rules('berlaku', 'Berlaku Hingga', 'required|trim');
-    }
-
-    public function rt_rw()
-    {
-    }
 }

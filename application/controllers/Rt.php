@@ -27,6 +27,79 @@ class Rt extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function tambah_data_rt()
+    {
+        $this->form_validation->set_rules('rt', 'RT', 'required|trim|integer');
+        $this->form_validation->set_rules('rw', 'RW', 'required|trim|integer');
+
+        $data['title'] = 'Admin - Tambah Data RT RW';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('rt/tambah_data_rt', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->rt_model->input_rt();
+            if ($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-success" role="alert">Data anda ditambahkan</div>'
+                );
+                redirect('rt/data_rt');
+            }
+        }
+    }
+
+    public function hapus_data_rt($kodeRt)
+    {
+        $where = array('kodeRt' => $kodeRt);
+        $this->rt_model->hapus_rt($where, 'tb_rt_rw');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">Data RT RW Berhasil Dihapus</div>'
+        );
+        redirect('rt/data_rt');
+    }
+
+    public function edit_data_rt($kodeRt)
+    {
+        $this->form_validation->set_rules('rt', 'RT', 'required|trim');
+        $this->form_validation->set_rules('rw', 'RW', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $where = array('kodeRt' => $kodeRt);
+            $query = $this->rt_model->edit_rt($where, 'tb_rt_rw');
+            $data['title'] = 'Admin - Edit Data RT RW';
+            $data['user'] = $this->db->get_where('user', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+
+            if ($query->num_rows() > 0) {
+                $data['rt_rw'] = $query->row();
+                $this->load->view('template/header', $data);
+                $this->load->view('template/sidebar', $data);
+                $this->load->view('rt/edit_data_rt', $data);
+                $this->load->view('template/footer');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Data Tidak Ditemukan!</div>');
+                redirect('rt/data_rt');
+            }
+        } else {
+            $post = $this->input->post(null, TRUE);
+            $this->rt_model->update_rt($post);
+
+            if ($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Data RT RW berhasil diubah!</div>');
+            }
+            redirect('rt/data_rt');
+        }
+    }
+
     public function data_ketua_rt()
     {
 
