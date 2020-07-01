@@ -182,23 +182,32 @@ class Domisili extends CI_Controller
 
     public function surat_domisili()
     {
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
+
         $data['title'] = 'Surat Domisili';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Kartu Keluarga';
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('data_warga/surat_domisili', $data);
-        $this->load->view('template/footer');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('data_warga/surat_domisili', $data);
+            $this->load->view('template/footer');
+        }
     }
 
     public function cetak_domisili()
     {
-          
-            $html = $this->output->get_output();
-            $this->load->library('dompdf_gen');
-            $this->dompdf->load_html($html);
-            $this->dompdf->render();
-            $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
+        $data['title'] = 'Surat Domisili';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $where = array('nik' => $this->input->post('nik'));
+        $query = $this->domisili_model->cetak_domisili($where, 'tb_ktp');
+        $data['ktp'] = $query->row();
+
+        $this->load->library('pdf');
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "barang";
+        $this->pdf->load_view('data_warga/cetak_domisili', $data);
     }
 }

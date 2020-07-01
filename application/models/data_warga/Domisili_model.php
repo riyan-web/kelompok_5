@@ -12,6 +12,11 @@ class Domisili_model extends CI_model
         return $this->db->get();
     }
 
+    function cetak_domisili($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+
     function input_domisili($post)
     {
         $data = [
