@@ -54,7 +54,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
-                <form action="<?= base_url('domisili/cetak_domisili'); ?>" method="post">
+                <form action="<?= base_url('domisili/surat_domisili'); ?>" method="post">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">

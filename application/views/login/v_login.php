@@ -40,12 +40,12 @@
         <div class="col-md-4 mx-auto">
           <!-- general form elements -->
           <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
-            <img src="assets/img/logo_sipeka.jpeg" style="width: 100px; height:auto; position:absolute;">
+
+            <img src="assets/img/logo_sipeka.jpeg" style="width: 300px; height:150px;">
           </div>
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">MASUK</h3>
+              <h3 class="card-title">FORM LOGIN</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -66,12 +66,9 @@
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                   <?= form_error('password', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
-
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Masuk</button>
               </div>
+              <!-- /.card-body -->
             </form>
             <div class="text-center">
               <a href="<?= base_url('login/lupa_pass'); ?>">Lupa Password ?</a>

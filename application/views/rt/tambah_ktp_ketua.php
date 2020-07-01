@@ -54,7 +54,7 @@
                                         <?php } ?>
                                     </select>
                                     <br>
-                                    <a href="<?= base_url('Rt/tambah_kk_ketua') ?>" class="btn btn-success">Tambah KK</a>
+                                    <a href="<?= base_url('Rt/tambah_kk_ketua') ?>" class="btn btn-success"><i class="fas fa-credit-card"></i> Tambah KK</a>
                                 </div>
                                 <div class="form-group">
                                     <label>Nama</label>
@@ -158,7 +158,8 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                        <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->

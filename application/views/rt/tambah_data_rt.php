@@ -47,7 +47,8 @@
                                     <?= form_error('rw', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                             </div>
                         </div>

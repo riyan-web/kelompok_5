@@ -115,8 +115,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Edit</button>
-                                    <button type="reset" class="btn btn-warning">Reset</button>
+                                    <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                             </div>
                             <!-- /.form-group -->

@@ -180,8 +180,8 @@ $rt_user = $this->db->query($query_rt)->row_array();
                                 <br>
                                 <div class="form-group">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Edit</button>
-                                        <button type="reset" class="btn btn-warning">Reset</button>
+                                        <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</button>
+                                        <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->

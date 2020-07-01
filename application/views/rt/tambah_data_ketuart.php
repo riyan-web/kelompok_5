@@ -57,7 +57,7 @@ $user = $this->db->query($query_user)->result();
                                     </select>
                                     <?= form_error('id_user', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     <br>
-                                    <a href="<?= base_url('Rt/registrasi') ?>" class="btn btn-success">Tambah User</a>
+                                    <a href="<?= base_url('Rt/registrasi') ?>" class="btn btn-success"><i class="fas fa-user-plus"></i> Tambah User</a>
                                 </div>
                                 <div class="form-group">
                                     <label>Pilih KTP</label>
@@ -70,10 +70,11 @@ $user = $this->db->query($query_user)->result();
                                     </select>
                                     <?= form_error('nik', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     <br>
-                                    <a href="<?= base_url('Rt/tambah_ktp_ketua') ?>" class="btn btn-success">Tambah KTP</a>
+                                    <a href="<?= base_url('Rt/tambah_ktp_ketua') ?>" class="btn btn-success"><i class="fas fa-id-card"></i> Tambah KTP</a>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

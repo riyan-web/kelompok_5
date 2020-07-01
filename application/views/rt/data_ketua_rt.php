@@ -29,7 +29,8 @@
                     <!-- /.card-header -->
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
-                        <a href="<?= base_url('Rt/tambah_data_ketuart') ?>">Tambah Data Ketua RT</a>
+                        <a href="<?= base_url('Rt/tambah_data_ketuart') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <br><br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
@@ -53,7 +54,7 @@
                                         <th><?php echo $rt->rt ?></th>
                                         <th><?php echo $rt->rw ?></th>
                                         <th>
-                                            <button class="btn-lg danger hapus"><?php echo anchor('rt/hapus_ketua_rt/' . $rt->id_ketua_rt, 'Hapus'); ?></button>
+                                            <a href="<?= base_url('rt/hapus_ketua_rt/' . $rt->id_ketua_rt) ?>" class="btn btn-danger hapus"><i class="fas fa-trash-alt"></i></a>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

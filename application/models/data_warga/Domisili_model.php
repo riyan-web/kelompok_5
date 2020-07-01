@@ -5,10 +5,10 @@ class Domisili_model extends CI_model
 
     public function getDomisili()
     {
-        $this->db->select('*', 'tb_ktp.nama', 'tb_kk.namaKk');
+        $this->db->select('*', 'tb_ktp.nama', 'tb_ktp.kodeRt', 'tb_rt_rw.kodeRt', 'tb_rt_rw.rt', 'tb_rt_rw.rw');
         $this->db->from('domisili');
         $this->db->join('tb_ktp', 'tb_ktp.nik = domisili.nik');
-        $this->db->join('tb_kk', 'tb_kk.noKk = domisili.noKk');
+        $this->db->join('tb_rt_rw', 'tb_ktp.kodeRt = tb_rt_rw.kodeRt');
         return $this->db->get();
     }
 

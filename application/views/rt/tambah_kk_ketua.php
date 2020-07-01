@@ -70,7 +70,7 @@
                                     </select>
                                     <?= form_error('kode_rt', ' <small class="text-danger pl-2">', '</small>'); ?>
                                     <br>
-                                    <a href="<?= base_url('Rt/tambah_data_rt') ?>" class="btn btn-success">Tambah RT</a>
+                                    <a href="<?= base_url('Rt/tambah_data_rt') ?>" class="btn btn-success"><i class="fas fa-book"></i> Tambah RT</a>
                                 </div>
 
 
@@ -106,7 +106,8 @@
                                     <?= form_error('kode_pos', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

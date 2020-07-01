@@ -193,6 +193,8 @@ class Domisili extends CI_Controller
             $this->load->view('template/sidebar', $data);
             $this->load->view('data_warga/surat_domisili', $data);
             $this->load->view('template/footer');
+        }else{
+            redirect('Domisili/cetak_domisili');
         }
     }
 
