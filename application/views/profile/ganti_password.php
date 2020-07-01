@@ -34,7 +34,7 @@
                               <?= form_error('password_baru2', ' <small class="text-danger pl-2">', '</small>'); ?>
                           </div>
                           <div class="form-group">
-                              <button type="submit" class="btn btn-primary">Ganti Password</button>
+                              <button type="submit" class="btn btn-warning"><i class="fas fa-key"></i> Ganti Password</button>
                           </div>
                       </form>
                   </div>

@@ -36,8 +36,13 @@
     <section class="content">
       <div class="row">
         <!-- left column -->
+
         <div class="col-md-4 mx-auto">
           <!-- general form elements -->
+          <div class="login-logo">
+            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <img src="assets/img/logo_sipeka.jpeg" style="width: 100px; height:auto; position:absolute;">
+          </div>
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">MASUK</h3>
@@ -49,10 +54,11 @@
             <!-- /.card-header -->
             <!-- form start -->
             <form role="form" method="post" action="<?= base_url('login'); ?>">
+
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" autocomplete="off" value="<?= set_value('email'); ?>">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter e  mail" autocomplete="off" value="<?= set_value('email'); ?>">
                   <?= form_error('email', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="form-group">

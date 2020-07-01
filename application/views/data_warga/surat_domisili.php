@@ -59,7 +59,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nomor Kartu Penduduk</label>
+                                    <label>Pilih Nomor Induk Penduduk</label>
                                     <select name="nik" class="form-control select2" style="width: 100%;">
                                         <option value="">- piilih -</option>
                                         <?php
@@ -70,7 +70,9 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('nik', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Cetak</button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-print"></i> Cetak Surat Domisili
+                                    </button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

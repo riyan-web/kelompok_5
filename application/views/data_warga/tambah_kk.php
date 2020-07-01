@@ -121,8 +121,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('kode_pos', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
-                                    <button type="reset" class="btn btn-warning">Reset</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

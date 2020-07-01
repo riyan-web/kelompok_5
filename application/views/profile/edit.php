@@ -51,7 +51,7 @@
             </div>
             <div class="form-group row justify-content-end">
               <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-warning"><i class="fas fa-user-edit"></i> Edit Profile</button>
               </div>
             </div>
           </form>
