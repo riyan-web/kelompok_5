@@ -18,23 +18,30 @@ $ktp_join = $this->db->query($ktp)->result();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Detail Kartu Tanda Penduduk</h1>
+                    <h1 class="m-0 text-dark">Detail Kartu Keluarga</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kartu Penduduk</a></li>
-                        <li class="breadcrumb-item active">Detail KTP</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/kartu_keluarga">Kartu Keluarga</a></li>
+                        <li class="breadcrumb-item active">Detail KK</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
             <div class="card border-success mb-3" style="max-width: 72rem;">
-                <div class="card-header bg-transparent border-success"><?= $tb_kk['noKk'];  ?></div>
+                <div class="card-header bg-transparent border-success"><?= "Nomor Kartu Keluarga : " . $tb_kk['noKk'];  ?></div>
                 <div class="card-body text-success">
-                    <h5 class="card-title">Success card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title"><?= "Kepala Keluarga : " . $tb_kk['namaKk'];  ?></h5>
+                    <p class="card-text"> <?= $tb_kk['alamat'] . " - " .
+                                                $tb_kk['kelurahan'] . " - " .
+                                                $tb_kk['kecamatan'] . " - " .
+                                                $tb_kk['kabupaten'] . " - " .
+                                                $tb_kk['provinsi']; ?>
+                    </p>
                 </div>
                 <div class="card-footer bg-transparent border-success"></div>
             </div>
+            <h1 class="m-0 text-dark">Anggota Keluarga : </h1>
+            <br>
             <div class="card-deck">
                 <?php foreach ($ktp_join as $kj) : ?>
 
@@ -44,13 +51,13 @@ $ktp_join = $this->db->query($ktp)->result();
                                 <div class="col-sm-12">
                                     <img src="<?= base_url('assets/img/ktp/') . $kj->gambar_ktp; ?>" class="img-thumbnail" alt="">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo $kj->nik ?></h5>
-                                        <p class="card-text">Somequick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h5 class="card-title"><?= $kj->nama . ", " . $kj->nik; ?></h5>
+                                        <p class="card-text"><?= $kj->tempatLahir . ", " . $kj->tanggalLahir; ?></p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Cras justo odio</li>
-                                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                                        <li class="list-group-item">Vestibulum at eros</li>
+                                        <li class="list-group-item"><?= "Agama : " . $kj->agama; ?></li>
+                                        <li class="list-group-item"><?= "pekerjaan : " . $kj->pekerjaan; ?></li>
+                                        <li class="list-group-item"><?= "Kewarganegaraan : " . $kj->kewarganegaraan; ?></li>
                                     </ul>
                                 </div>
                             </div>

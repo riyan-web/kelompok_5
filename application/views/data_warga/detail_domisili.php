@@ -8,8 +8,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/domisili/data_domisili">Data Domisili</a></li>
-                        <li class="breadcrumb-item active">Detail Domisili</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/domisili/data_domisili">Data Non Domisili</a></li>
+                        <li class="breadcrumb-item active">Detail Data Non Domisili</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $tb_domisili['nik']; ?></h5>
+                            <h5 class="card-title"><?= "NIK : " . $tb_domisili['nik']; ?></h5>
                             <p class="card-text"><?= "Alamat Asal          : " . $tb_domisili['alamat_asal']; ?></p>
                             <p class="card-text"><?= "Tanggal Surat Dibuat : " .  $tb_domisili['tgl_surat_dibuat']; ?></p>
                             <p class="card-text"><?= "Tanggal Surat Masuk  : " . $tb_domisili['tgl_surat_masuk']; ?></p>

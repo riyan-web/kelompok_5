@@ -25,12 +25,12 @@ $domisili = $this->db->query($query_kk)->result();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Warga Domisili</h1>
+                    <h1>Data Warga Non Domisili</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Domisili</a></li>
-                        <li class="breadcrumb-item active">Data Domisili</li>
+                        <li class="breadcrumb-item active">Data Non Domisili</li>
                     </ol>
                 </div>
             </div>

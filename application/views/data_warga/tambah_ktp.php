@@ -33,7 +33,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/ktp">KTP</a></li>
                         <li class="breadcrumb-item active">Tambah KTP</li>
                     </ol>
                 </div>
@@ -117,14 +117,14 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 </div>
                                 <div class="form-group">
                                     <label>RT</label>
-                                    <input type="text" enabled="enabled" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;">
+                                    <input type="text" enabled="enabled" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;" readonly>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="kode_rt" value="<?= $rt_user['kodeRt']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>RW</label>
-                                    <input type="text" enabled="enabled" value="<?= $rt_user['rw']; ?>" class="form-control" style="width: 100%;">
+                                    <input type="text" enabled="enabled" value="<?= $rt_user['rw']; ?>" class="form-control" style="width: 100%;" readonly>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -185,6 +185,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 <div class="form-group">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="reset" class="btn btn-warning">Reset</button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->

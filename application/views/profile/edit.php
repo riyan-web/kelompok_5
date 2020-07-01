@@ -8,8 +8,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <li class="breadcrumb-item"><a href="#">Profile</a></li>
+            <li class="breadcrumb-item active">Edit Profile</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -47,7 +47,7 @@
                     <input type="file" name="image" id="image">
                   </div>
                 </div>
-              </div> 
+              </div>
             </div>
             <div class="form-group row justify-content-end">
               <div class="col-sm-10">

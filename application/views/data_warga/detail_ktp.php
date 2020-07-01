@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kartu Penduduk</a></li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/ktp">KTP</a></li>
                         <li class="breadcrumb-item active">Detail KTP</li>
                     </ol>
                 </div><!-- /.col -->
@@ -28,11 +28,16 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $tb_ktp['nik']; ?></h5>
-                            <p class="card-text"><?= $tb_ktp['nama']; ?></p>
-                            <p class="card-text"><?= $tb_ktp['tempatLahir']; ?></p>
-                            <p class="card-text"><?= $tb_ktp['tanggalLahir']; ?></p>
-                            <p class="card-text"><small class="text-muted"> <?= $tb_ktp['alamat']; ?></small></p>
+                            <h5 class="card-title"><?= $tb_ktp['nama'] . ", " . $tb_ktp['nik']; ?></h5>
+                            <p class="card-text"><?= $tb_ktp['tempatLahir'] . ", " . $tb_ktp['tanggalLahir'];; ?></p>
+                            <p class="card-text"><?= "Agama : " . $tb_ktp['agama']; ?></p>
+                            <p class="card-text"><?= "pekerjaan : " . $tb_ktp['pekerjaan']; ?></p>
+                            <p class="card-text"><?= "Kewarganegaraan : " . $tb_ktp['kewarganegaraan']; ?></p>
+                            <p class="card-text"><small class="text-muted">
+                                    <?= $tb_ktp['alamat'] . " - " .
+                                        $tb_ktp['kelurahan'] . " - " .
+                                        $tb_ktp['kecamatan']; ?></small>
+                            </p>
                         </div>
                     </div>
                 </div>

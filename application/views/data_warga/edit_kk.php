@@ -30,8 +30,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/kartu_keluarga">Kartu Keluarga</a></li>
+                        <li class="breadcrumb-item active">Edit KK</li>
                     </ol>
                 </div>
             </div>
@@ -63,7 +63,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Kepala Keluarga</label> 
+                                    <label>Nama Kepala Keluarga</label>
                                     <input type="text" name="nama_kk" class="form-control" value="<?php echo $this->input->post('nama_kk') ?? $kk->namaKk ?>" style="width: 100%;">
                                     <?= form_error('nama_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
@@ -122,6 +122,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Edit</button>
+                                    <button type="reset" class="btn btn-warning">Reset</button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

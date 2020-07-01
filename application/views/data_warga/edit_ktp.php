@@ -21,8 +21,8 @@ $rt_user = $this->db->query($query_rt)->row_array();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/ktp">KTP</a></li>
+                        <li class="breadcrumb-item active">Edit KTP</li>
                     </ol>
                 </div>
             </div>
@@ -35,7 +35,7 @@ $rt_user = $this->db->query($query_rt)->row_array();
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Kartu Tanda Penduduk</h3>
+                    <h3 class="card-title">Edit Kartu Tanda Penduduk</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -171,6 +171,7 @@ $rt_user = $this->db->query($query_rt)->row_array();
                                 <div class="form-group">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Edit</button>
+                                        <button type="reset" class="btn btn-warning">Reset</button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
