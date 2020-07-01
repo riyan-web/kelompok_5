@@ -51,6 +51,8 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required|trim');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+        $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required|trim');
+        $this->form_validation->set_rules('provinsi', 'Provinsi', 'required|trim');
         $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
         $this->form_validation->set_rules('sta_perkawinan', 'Status Perkawinan', 'required|trim');
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
@@ -120,6 +122,8 @@ class Data_warga extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required|trim');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+        $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required|trim');
+        $this->form_validation->set_rules('provinsi', 'Provinsi', 'required|trim');
         $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
         $this->form_validation->set_rules('sta_perkawinan', 'Status Perkawinan', 'required|trim');
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');

@@ -19,13 +19,6 @@ $rt = $this->db->query($query_rt)->row();
 	<title>Cetak Barang</title>
 	<link rel="stylesheet" href="">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<style>
-		.line-title {
-			border: 0;
-			border-style: unset;
-			border-top: 1px solid #000;
-		}
-	</style>
 </head>
 
 <body>
@@ -34,9 +27,9 @@ $rt = $this->db->query($query_rt)->row();
 		<tr>
 			<td align="center">
 				<span style="line-height: 1.6; font-weight:bold;">
-					PEMERINTAH KABUPATEN KULON PROGO
-					<br>KECAMATAN LENDAH
-					<br>DESA BUMIREJO
+					PEMERINTAH KABUPATEN KOTA TANGERANG SELATAN
+					<br>KECAMATAN SERPONG
+					<br>DESA SERPONG
 				</span>
 				<hr />
 				<b><u>SURAT KETERANGAN DOMISILI</u></b>
@@ -44,7 +37,7 @@ $rt = $this->db->query($query_rt)->row();
 			<span>
 				Yang Bertanda Tangan Dibawah Ini :
 				<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nama &nbsp;&nbsp; : <?php echo $rt->nama ?>
-				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jabatan : <?php echo "Ketua RT " . $rt->rt . " Rw " . $rt->rw ?>
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jabatan : <?php echo "Ketua Rt " . $rt->rt . " Rw " . $rt->rw ?>
 				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alamat&nbsp;&nbsp;: <?php echo  $rt->alamat ?>
 				<br><br>Menerangkan Bahwa :
 				<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?php echo $ktp->nama ?>
@@ -61,13 +54,17 @@ $rt = $this->db->query($query_rt)->row();
 	</table>
 
 	<p>
-		<br>Dengan ini menerangkan bahwa orang yang bersangkutab benar tinggal berdomisili di Desa
-		Bumirejo Kecamatan Lendah Kabupaten Kulon Progo.
+		<br>Dengan ini menerangkan bahwa orang yang bersangkutan benar tinggal berdomisili di Desa
+		Serpong Kecamatan Serpong Kabupaten Kota Tangerang Selatan.
 
 		<br>Demikian surat keterangan domisili ini kami buat sebagaimana perlunya semoga dapat
-		digunakan sebagaimana mestinya. Dan kepada yang berkepentingan agar menjadi maklum
+		digunakan sebagaimana mestinya. Dan kepada yang berkepentingan agar menjadi maklum.
 	</p>
-	<br class="line-title">
+
+	<br><?php echo "Serpong, " . date('d-m-Y'); ?>
+	<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo "Ketua Rt " . $rt->rt . " Rw " . $rt->rw ?>
+	<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rt->nama ?>
+
 
 </body>
 

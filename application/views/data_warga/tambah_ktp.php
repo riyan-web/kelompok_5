@@ -143,6 +143,16 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
+                                    <label>Kabupaten</label>
+                                    <input type="text" name="kabupaten" class="form-control" style="width: 100%;">
+                                    <?= form_error('kabupaten', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Provinsi</label>
+                                    <input type="text" name="provinsi" class="form-control" style="width: 100%;">
+                                    <?= form_error('provinsi', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
                                     <label>Agama</label>
                                     <select name="agama" class="form-control select2" style="width: 100%;">
                                         <option>Islam</option>

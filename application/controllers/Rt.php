@@ -206,6 +206,8 @@ class Rt extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required|trim');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
+        $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required|trim');
+        $this->form_validation->set_rules('provinsi', 'Provinsi', 'required|trim');
         $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
         $this->form_validation->set_rules('sta_perkawinan', 'Status Perkawinan', 'required|trim');
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
@@ -237,6 +239,8 @@ class Rt extends CI_Controller
                 'kodeRt' => $kode_rt['kodeRt'],
                 'kelurahan' => htmlspecialchars($this->input->post('kelurahan', true)),
                 'kecamatan' => htmlspecialchars($this->input->post('kecamatan', true)),
+                'kabupaten' => htmlspecialchars($this->input->post('kabupaten', true)),
+                'provinsi' => htmlspecialchars($this->input->post('provinsi', true)),
                 'agama' => htmlspecialchars($this->input->post('agama', true)),
                 'statusPerkawinan' => htmlspecialchars($this->input->post('sta_perkawinan', true)),
                 'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),

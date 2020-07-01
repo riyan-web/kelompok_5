@@ -118,6 +118,16 @@ $rt_user = $this->db->query($query_rt)->row_array();
                                     <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
+                                    <label>Kabupaten</label>
+                                    <input type="text" name="kabupaten" class="form-control" value="<?php echo $this->input->post('kabupaten') ?? $ktp->kabupaten ?>" style="width: 100%;">
+                                    <?= form_error('kabupaten', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Provinsi</label>
+                                    <input type="text" name="provinsi" class="form-control" value="<?php echo $this->input->post('provinsi') ?? $ktp->provinsi ?>" style="width: 100%;">
+                                    <?= form_error('provinsi', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
                                     <label>Agama</label>
                                     <select name="agama" class="form-control select2" style="width: 100%;">
                                         <option><?= $ktp->agama; ?></option>

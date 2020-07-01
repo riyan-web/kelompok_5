@@ -25,6 +25,8 @@ class Ktp_model extends CI_model
             'kodeRt' => htmlspecialchars($this->input->post('kode_rt', true)),
             'kelurahan' => htmlspecialchars($this->input->post('kelurahan', true)),
             'kecamatan' => htmlspecialchars($this->input->post('kecamatan', true)),
+            'kabupaten' => htmlspecialchars($this->input->post('kabupaten', true)),
+            'provinsi' => htmlspecialchars($this->input->post('provinsi', true)),
             'agama' => htmlspecialchars($this->input->post('agama', true)),
             'statusPerkawinan' => htmlspecialchars($this->input->post('sta_perkawinan', true)),
             'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
@@ -65,6 +67,8 @@ class Ktp_model extends CI_model
         $params['kodeRt'] = $post['kode_rt'];
         $params['kelurahan'] = $post['kelurahan'];
         $params['kecamatan'] = $post['kecamatan'];
+        $params['kabupaten'] = $post['kabupaten'];
+        $params['provinsi'] = $post['provinsi'];
         $params['agama'] = $post['agama'];
         $params['statusPerkawinan'] = $post['sta_perkawinan'];
         $params['pekerjaan'] = $post['pekerjaan'];
