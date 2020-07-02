@@ -25,12 +25,12 @@ $domisili = $this->db->query($query_kk)->result();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Warga Domisili</h1>
+                    <h1>Data Warga Non Domisili</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Domisili</a></li>
-                        <li class="breadcrumb-item active">Data Domisili</li>
+                        <li class="breadcrumb-item active">Data Non Domisili</li>
                     </ol>
                 </div>
             </div>
@@ -49,7 +49,8 @@ $domisili = $this->db->query($query_kk)->result();
                     <!-- /.card-header -->
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
-                        <a href="<?= base_url('domisili/tambah_data_domisili') ?>">Tambah Data</a>
+                        <a href="<?= base_url('domisili/tambah_data_domisili') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <br><br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
@@ -75,9 +76,9 @@ $domisili = $this->db->query($query_kk)->result();
                                         <th><?php echo $dom->tgl_surat_dibuat ?></th>
                                         <th><?php echo $dom->tgl_surat_masuk ?></th>
                                         <th>
-                                            <button class="btn-lg warning"><?php echo anchor('domisili/edit_domisili/' . $dom->id_domisili, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('domisili/hapus_domisili/' . $dom->id_domisili, 'Hapus'); ?></button>
-                                            <button class="btn-lg warning"><?php echo anchor('domisili/detail_domisili/' . $dom->id_domisili, 'Detail'); ?></button>
+                                            <a href="<?= base_url('domisili/edit_domisili/' . $dom->id_domisili) ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url('domisili/hapus_domisili/' . $dom->id_domisili) ?>" class="btn btn-danger hapus"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url('domisili/detail_domisili/' . $dom->id_domisili) ?>" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

@@ -69,11 +69,11 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Registrasi</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Registrasi</button>
               </div>
             </form>
             <div class="text-center">
-              <a href="<?= base_url('admin'); ?>">Kembali Ke Beranda</a>
+              <a href="<?= base_url('Rt/tambah_data_ketuart'); ?>">Kembali</a>
             </div>
           </div>
           <!-- /.card -->

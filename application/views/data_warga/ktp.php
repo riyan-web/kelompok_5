@@ -8,7 +8,7 @@
 
         $rt = $this->db->query($query_rt)->row_array();
 
-        $grup_rt = $rt['kodeRt']; 
+        $grup_rt = $rt['kodeRt'];
         $query_ktp = "SELECT *
                         FROM `tb_ktp` JOIN `tb_rt_rw` ON `tb_rt_rw`.`kodeRt` = `tb_ktp`.`kodeRt`
                                       JOIN `tb_kk` ON `tb_kk`.`noKk` = `tb_ktp`.`noKk`
@@ -27,8 +27,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data Warga</li>
+                                <li class="breadcrumb-item"><a href="#">Data Warga</a></li>
+                                <li class="breadcrumb-item active">KTP</li>
                             </ol>
                         </div>
                     </div>
@@ -45,8 +45,10 @@
                                 <h3 class="card-title">Kartu Tanda Penduduk</h3>
                             </div>
                             <!-- /.card-header -->
+                            <?= $this->session->flashdata('message'); ?>
                             <div class="card-body">
-                                <a href="<?= base_url('data_warga/tambah_ktp') ?>">Tambah Data</a>
+                                <a href="<?= base_url('data_warga/tambah_ktp') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                                <br><br>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr bgcolor="aqua" align="center">
@@ -72,9 +74,9 @@
                                                 <th><?php echo $ktp->agama ?></th>
                                                 <th><?php echo $ktp->pekerjaan ?></th>
                                                 <th>
-                                                    <button class="btn-lg warning"><?php echo anchor('data_warga/edit_ktp/' . $ktp->nik, 'Edit'); ?></button>
-                                                    <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_ktp/' . $ktp->nik, 'Hapus'); ?></button>
-                                                    <button class="btn-lg danger"><?php echo anchor('data_warga/detail_ktp/' . $ktp->nik, 'detail'); ?></button>
+                                                    <a href="<?= base_url('data_warga/edit_ktp/' . $ktp->nik) ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="<?= base_url('data_warga/hapus_ktp/' . $ktp->nik) ?>" class="btn btn-danger hapus"><i class="fas fa-trash-alt"></i></a>
+                                                    <a href="<?= base_url('data_warga/detail_ktp/' . $ktp->nik) ?>" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
                                                 </th>
                                             </tr>
                                             <?php $no++ ?>

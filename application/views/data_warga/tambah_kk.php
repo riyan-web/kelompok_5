@@ -30,7 +30,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/kartu_keluarga">Kartu Keluarga</a></li>
                         <li class="breadcrumb-item active">Tambah KK</li>
                     </ol>
                 </div>
@@ -58,7 +58,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nomor Kartu Keluarga</label> 
+                                    <label>Nomor Kartu Keluarga</label>
                                     <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="Nomor Kartu Keluarga" style="width: 100%;">
                                     <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
@@ -121,7 +121,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <?= form_error('kode_pos', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

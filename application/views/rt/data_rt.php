@@ -29,7 +29,8 @@
                     <!-- /.card-header -->
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
-                        <a href="<?= base_url('rt/tambah_data_rt') ?>">Tambah Data RT</a>
+                        <a href="<?= base_url('rt/tambah_data_rt') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <br><br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
@@ -47,10 +48,8 @@
                                         <th><?php echo $rt->rt ?></th>
                                         <th><?php echo $rt->rw ?></th>
                                         <th>
-                                            <button class="btn-lg warning"><?php echo anchor('rt/edit_data_rt/' . $rt->kodeRt, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('rt/hapus_data_rt/' . $rt->kodeRt, 'Hapus'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('rt/tambah_data_rt/' . $rt->kodeRt, 'Tambah'); ?></button>
-
+                                            <a href="<?= base_url('rt/edit_data_rt/' . $rt->kodeRt) ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url('rt/hapus_data_rt/' . $rt->kodeRt) ?>" class="btn btn-danger hapus"><i class="fas fa-trash-alt"></i></a>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

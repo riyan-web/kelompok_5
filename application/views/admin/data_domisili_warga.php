@@ -34,14 +34,12 @@
                                 <tr bgcolor="aqua" align="center">
                                     <th style="width: 30px;">No.</th>
                                     <th>Nama</th>
-                                    <th>Nama Kepala keluarga</th>
                                     <th>Alamat Asal</th>
                                     <th>Pindah Ke</th>
                                     <th>Alasan Pindah</th>
-                                    <th>Pengikut</th>
                                     <th>Tanggal Dibuat</th>
                                     <th>Tanggal Masuk</th>
-                                    <th style="width:150px;">Action</th>
+                                    <th>RT/RW</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,18 +48,12 @@
                                     <tr>
                                         <th><?= $no ?> </th>
                                         <th><?php echo $dom->nama ?></th>
-                                        <th><?php echo $dom->namaKk ?></th>
                                         <th><?php echo $dom->alamat_asal ?></th>
                                         <th><?php echo $dom->pindah_ke ?></th>
                                         <th><?php echo $dom->alasan_pindah ?></th>
-                                        <th><?php echo $dom->pengikut ?></th>
                                         <th><?php echo $dom->tgl_surat_dibuat ?></th>
                                         <th><?php echo $dom->tgl_surat_masuk ?></th>
-                                        <th>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/edit_kk/' . $dom->noKk, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_kk/' . $dom->noKk, 'Hapus'); ?></button>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/detail_kk/' . $dom->noKk, 'Detail'); ?></button>
-                                        </th>
+                                        <th><?php echo $dom->rt . " / " . $dom->rw ?></th>
                                     </tr>
                                     <?php $no++ ?>
                                 <?php } ?>

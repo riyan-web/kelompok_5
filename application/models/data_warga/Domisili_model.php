@@ -5,16 +5,33 @@ class Domisili_model extends CI_model
 
     public function getDomisili()
     {
-        $this->db->select('*', 'tb_ktp.nama', 'tb_kk.namaKk');
+        $this->db->select('*', 'tb_ktp.nama', 'tb_ktp.kodeRt', 'tb_rt_rw.kodeRt', 'tb_rt_rw.rt', 'tb_rt_rw.rw');
         $this->db->from('domisili');
         $this->db->join('tb_ktp', 'tb_ktp.nik = domisili.nik');
-        $this->db->join('tb_kk', 'tb_kk.noKk = domisili.noKk');
+        $this->db->join('tb_rt_rw', 'tb_ktp.kodeRt = tb_rt_rw.kodeRt');
         return $this->db->get();
     }
 
-    function input_domisili($data, $table)
+    function cetak_domisili($where, $table)
     {
-        $this->db->insert($table, $data);
+        return $this->db->get_where($table, $where);
+    }
+
+    function input_domisili($post)
+    {
+        $data = [
+            'nik' => htmlspecialchars($this->input->post('nik', true)),
+            'alamat_asal' => htmlspecialchars($this->input->post('alamat_asal', true)),
+            'pindah_ke' => htmlspecialchars($this->input->post('pindah_ke', true)),
+            'alasan_pindah' => htmlspecialchars($this->input->post('alasan_pindah', true)),
+            'tgl_surat_dibuat' => htmlspecialchars($this->input->post('tgl_dibuat', true)),
+            'tgl_surat_masuk' => htmlspecialchars($this->input->post('tgl_masuk', true)),
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'surat_domisili' => $post['image'],
+            'created'     =>  date("Y-m-d")
+        ];
+
+        $this->db->insert('domisili', $data);
     }
 
     function hapus_domisili($where, $table)
@@ -28,36 +45,24 @@ class Domisili_model extends CI_model
         return $this->db->get_where($table, $where);
     }
 
-    function update_domisili()
+    function update_domisili($post)
     {
-        $id_domisili = $this->input->post('id_domisili');
-        $nik = $this->input->post('nik');
-        $alamat_asal = $this->input->post('alamat_asal');
-        $pindah_ke = $this->input->post('pindah_ke');
-        $alasan_pindah = $this->input->post('alasan_pindah');
-        $tgl_dibuat = $this->input->post('tgl_dibuat');
-        $tgl_masuk = $this->input->post('tgl_masuk');
-        $keterangan = $this->input->post('keterangan');
 
-        $this->db->set(
-            'id_domisili',
-            $id_domisili,
-            'nik',
-            $nik,
-            'alamat_asal',
-            $alamat_asal,
-            'pindah_ke',
-            $pindah_ke,
-            'alasan_pindah',
-            $alasan_pindah,
-            'tgl_surat_dibuat',
-            $tgl_dibuat,
-            'tgl_surat_masuk',
-            $tgl_masuk,
-            'keterangan',
-            $keterangan
-        );
-        $this->db->where('id_domisili', $id_domisili);
-        $this->db->update('domisili');
+        $params['id_domisili'] = $post['id_domisili'];
+        $params['nik'] = $post['nik'];
+        $params['alamat_asal'] = $post['alamat_asal'];
+        $params['pindah_ke'] = $post['pindah_ke'];
+        $params['alasan_pindah'] = $post['alasan_pindah'];
+        $params['tgl_surat_dibuat'] = $post['tgl_dibuat'];
+        $params['tgl_surat_masuk'] = $post['tgl_masuk'];
+        $params['keterangan'] = $post['keterangan'];
+
+        if ($post['image'] != null) {
+            $params['surat_domisili'] = $post['image'];
+        }
+
+
+        $this->db->where('id_domisili', $post['id_domisili']);
+        $this->db->update('domisili', $params);
     }
 }

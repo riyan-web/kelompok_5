@@ -8,8 +8,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <li class="breadcrumb-item"><a href="#">Profile</a></li>
+            <li class="breadcrumb-item active">Edit Profile</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -51,7 +51,7 @@
             </div>
             <div class="form-group row justify-content-end">
               <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-warning"><i class="fas fa-user-edit"></i> Edit Profile</button>
               </div>
             </div>
           </form>

@@ -31,8 +31,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Advanced Form</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/domisili/data_domisili#">Data Non Domisili</a></li>
+                        <li class="breadcrumb-item active">Tambah Data Non Domisili</li>
                     </ol>
                 </div>
             </div>
@@ -45,7 +45,7 @@ $rt = $this->db->query($query_kodeRt)->result();
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Kartu Keluarga</h3>
+                    <h3 class="card-title">Tambah Data Non Domisili</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -64,10 +64,10 @@ $rt = $this->db->query($query_kodeRt)->result();
                                         <option value="">- piilih -</option>
                                         <?php
                                         foreach ($rt as $r) { ?>
-                                            <option value="<?= $r->nik ?>"><?= $r->nik ?></option>
-
+                                            <option value="<?= $r->nik ?>"><?= $r->nik . " - " . $r->nama ?></option>
                                         <?php } ?>
                                     </select>
+                                    <?= form_error('nik', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Alamat AsaL</label>
@@ -105,9 +105,15 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <input type="text" name="keterangan" class="form-control" style="width: 100%;">
                                     <?= form_error('keterangan', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
-
+                                <div class="forrm-group">
+                                    <label>Gambar Surat Domisili</label>
+                                    <input type="file" name="image" class="form-control">
+                                    <small>Biarkan Kosong Jika Anda Tidak Mempunyai Gambar Surat Domisili Tersebut</small>
+                                </div>
+                                <br>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                 </div>
                                 <!-- /.form-group -->
                             </div>

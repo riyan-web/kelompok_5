@@ -86,6 +86,17 @@
     });
   });
 </script>
+<script>
+  $(document).ready(function() {
+    $('.hapus').click(function() {
+      return confirm("Are you sure you want to delete?");
+    });
+  });
+
+  $(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
 <!-- Page script -->
 <script>
   $(function() {

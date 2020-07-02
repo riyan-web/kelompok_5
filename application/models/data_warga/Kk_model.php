@@ -27,39 +27,19 @@ class Kk_model extends CI_model
         return $this->db->get_where($table, $where);
     }
 
-    function update_kk($noKk)
+    function update_kk($post)
     {
-        $nama_kk = $this->input->post('nama_kk', true);
-        $alamat = $this->input->post('alamat_kk', true);
-        $kelurahan = $this->input->post('kelurahan', true);
-        $kecamatan = $this->input->post('kecamatan', true);
-        $kabupaten = $this->input->post('kabupaten', true);
-        $kodepos = $this->input->post('kode_pos', true);
-        $provinsi = $this->input->post('provinsi', true);
-        $tgl_dikeluarkan = $this->input->post('tgl_dikeluarkan', true);
-        $kode_rt = $this->input->post('kode_rt', true);
+        $params['namaKk'] = $post['nama_kk'];
+        $params['alamat'] = $post['alamat_kk'];
+        $params['kelurahan'] = $post['kelurahan'];
+        $params['kecamatan'] = $post['kecamatan'];
+        $params['kabupaten'] = $post['kabupaten'];
+        $params['kodepos'] = $post['kode_pos'];
+        $params['provinsi'] = $post['provinsi'];
+        $params['dikeluarkanTanggal'] = $post['tgl_dikeluarkan'];
+        $params['kodeRt'] = $post['kode_rt'];
 
-        $this->db->set(
-            'namaKk',
-            $nama_kk,
-            'alamat',
-            $alamat,
-            'kelurahan',
-            $kelurahan,
-            'kecamatan',
-            $kecamatan,
-            'kabupaten',
-            $kabupaten,
-            'kodepos',
-            $kodepos,
-            'provinsi',
-            $provinsi,
-            'dikeluarkanTanggal',
-            $tgl_dikeluarkan,
-            'kodeRt',
-            $kode_rt
-        );
-        $this->db->where('noKk', $noKk);
-        $this->db->update('tb_kk');
+        $this->db->where('noKk', $post['no_kk']);
+        $this->db->update('tb_kk', $params);
     }
 }

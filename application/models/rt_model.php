@@ -17,4 +17,39 @@ class Rt_model extends CI_model
     {
         return $this->db->get('tb_rt_rw');
     }
+
+    public function input_rt()
+    {
+        $data = [
+            'rt' => htmlspecialchars($this->input->post('rt', true)),
+            'rw' => htmlspecialchars($this->input->post('rw', true)),
+        ];
+
+        $this->db->insert('tb_rt_rw', $data);
+    }
+    function hapus_rt($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    function hapus_ketua_rt($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    function edit_rt($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+
+    function update_rt($post)
+    {
+        $params['rt'] = $post['rt'];
+        $params['rw'] = $post['rw'];
+
+        $this->db->where('kodeRt', $post['kode_rt']);
+        $this->db->update('tb_rt_rw', $params);
+    }
 }

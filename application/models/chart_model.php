@@ -24,4 +24,10 @@ class Chart_model extends CI_model
         $query_kk = "SELECT CONCAT(MONTH(created),'/',YEAR(created)) AS tahun_bulan_kk, COUNT(*) AS jumlah_bulanan_kk FROM tb_kk GROUP BY MONTH(created),YEAR(created)";
         return $this->db->query($query_kk)->result();
     }
+
+    public function Domisili_per_bulan()
+    {
+        $query_domisili = "SELECT CONCAT(MONTH(created),'/',YEAR(created)) AS tahun_bulan_domisili, COUNT(*) AS jumlah_bulanan_domisili FROM domisili GROUP BY MONTH(created),YEAR(created)";
+        return $this->db->query($query_domisili)->result();
+    }
 }

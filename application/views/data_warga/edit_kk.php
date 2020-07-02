@@ -30,8 +30,8 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/kartu_keluarga">Kartu Keluarga</a></li>
+                        <li class="breadcrumb-item active">Edit KK</li>
                     </ol>
                 </div>
             </div>
@@ -53,87 +53,86 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <!-- /.card-header -->
                 <?= $this->session->flashdata('message'); ?>
-                <?php foreach ($tb_kk as $kk) { ?>
-                    <form action="" method="post">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Nomor Kartu Keluarga</label>
-                                        <input type="text" class="form-control" id="no_kk" name="no_kk" value="<?php echo $kk->noKk ?>" style="width: 100%;" readonly>
-                                        <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Nama Kepala Keluarga</label>
-                                        <input type="text" name="nama_kk" class="form-control" value="<?php echo $kk->namaKk ?>" style="width: 100%;">
-                                        <?= form_error('nama_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Alamat</label>
-                                        <input type="text" name="alamat_kk" class="form-control" value="<?php echo $kk->alamat ?>" style="width: 100%;">
-                                        <?= form_error('alamat_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tanggal Dikeluarkan</label>
-                                        <input type="text" name="tgl_dikeluarkan" class="form-control" value="<?php echo $kk->dikeluarkanTanggal ?>" style="width: 100%;">
-                                        <?= form_error('tgl_dikeluarkan', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>RT</label>
-                                        <input type="text" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="hidden" name="kode_rt" value="<?= $rt_user['kodeRt']; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>RW</label>
-                                        <input type="text" enabled="enabled" value="<?= $rt_user['rw']; ?>" class="form-control" style="width: 100%;" readonly>
-                                    </div>
-
-                                    <!-- /.form-group -->
+                <form action="" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nomor Kartu Keluarga</label>
+                                    <input type="text" class="form-control" id="no_kk" name="no_kk" value="<?php echo $kk->noKk ?>" style="width: 100%;" readonly>
+                                    <?= form_error('no_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Kepala Keluarga</label>
+                                    <input type="text" name="nama_kk" class="form-control" value="<?php echo $this->input->post('nama_kk') ?? $kk->namaKk ?>" style="width: 100%;">
+                                    <?= form_error('nama_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <input type="text" name="alamat_kk" class="form-control" value="<?php echo $this->input->post('alamat_kk') ?? $kk->alamat ?>" style="width: 100%;">
+                                    <?= form_error('alamat_kk', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Dikeluarkan</label>
+                                    <input type="text" name="tgl_dikeluarkan" class="form-control" value="<?php echo $this->input->post('tgl_dikeluarkan') ?? $kk->dikeluarkanTanggal ?>" style="width: 100%;">
+                                    <?= form_error('tgl_dikeluarkan', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>RT</label>
+                                    <input type="text" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="kode_rt" value="<?= $rt_user['kodeRt']; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>RW</label>
+                                    <input type="text" enabled="enabled" value="<?= $rt_user['rw']; ?>" class="form-control" style="width: 100%;" readonly>
                                 </div>
 
-                                <!-- /.col -->
-                                <div class="col-md-6">
-                                    <!-- /.form-group -->
-                                    <div class="form-group">
-                                        <label>Kelurahan</label>
-                                        <input type="text" name="kelurahan" class="form-control" value="<?php echo $kk->kelurahan ?>" style="width: 100%;">
-                                        <?= form_error('kelurahan', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kecamatan</label>
-                                        <input type="text" name="kecamatan" class="form-control" value="<?php echo $kk->kecamatan ?>" style="width: 100%;">
-                                        <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kabupaten</label>
-                                        <input type="text" name="kabupaten" class="form-control" value="<?php echo $kk->kabupaten ?>" style="width: 100%;">
-                                        <?= form_error('kabupaten', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Provinsi</label>
-                                        <input type="text" name="provinsi" class="form-control" value="<?php echo $kk->provinsi ?>" style="width: 100%;">
-                                        <?= form_error('provinsi', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kode POS</label>
-                                        <input type="text" name="kode_pos" class="form-control" value="<?php echo $kk->kodepos ?>" style="width: 100%;">
-                                        <?= form_error('kode_pos', ' <small class="text-danger pl-2">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Edit</button>
-                                    </div>
-                                    <!-- /.form-group -->
-                                </div>
-                                <!-- /.col -->
+                                <!-- /.form-group -->
                             </div>
-                            <!-- /.row -->
+
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <!-- /.form-group -->
+                                <div class="form-group">
+                                    <label>Kelurahan</label>
+                                    <input type="text" name="kelurahan" class="form-control" value="<?php echo $this->input->post('kelurahan') ?? $kk->kelurahan ?>" style="width: 100%;">
+                                    <?= form_error('kelurahan', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kecamatan</label>
+                                    <input type="text" name="kecamatan" class="form-control" value="<?php echo $this->input->post('kecamatan') ?? $kk->kecamatan ?>" style="width: 100%;">
+                                    <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kabupaten</label>
+                                    <input type="text" name="kabupaten" class="form-control" value="<?php echo $this->input->post('kabupaten') ?? $kk->kabupaten ?>" style="width: 100%;">
+                                    <?= form_error('kabupaten', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Provinsi</label>
+                                    <input type="text" name="provinsi" class="form-control" value="<?php echo $this->input->post('provinsi') ?? $kk->provinsi ?>" style="width: 100%;">
+                                    <?= form_error('provinsi', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kode POS</label>
+                                    <input type="text" name="kode_pos" class="form-control" value="<?php echo $this->input->post('kode_pos') ?? $kk->kodepos ?>" style="width: 100%;">
+                                    <?= form_error('kode_pos', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</button>
+                                    <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
                         </div>
-                        <!-- /.card -->
-                    </form>
-                    <!-- form -->
-                <?php } ?>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card -->
+                </form>
+                <!-- form -->
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
     </section>

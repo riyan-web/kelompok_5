@@ -29,7 +29,8 @@
                     <!-- /.card-header -->
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body">
-                        <a href="<?= base_url('Rt/tambah_data_ketuart') ?>">Tambah Data Ketua RT</a>
+                        <a href="<?= base_url('Rt/tambah_data_ketuart') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                        <br><br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr bgcolor="aqua" align="center">
@@ -37,7 +38,6 @@
                                     <th>Nama</th>
                                     <th>No Induk Kependudukan</th>
                                     <th>Email</th>
-                                    <th>Password</th>
                                     <th>Ketua RT</th>
                                     <th>RW</th>
                                     <th style="width:150px;">Action</th>
@@ -51,13 +51,10 @@
                                         <th><?php echo $rt->nama ?></th>
                                         <th><?php echo $rt->nik ?></th>
                                         <th><?php echo $rt->email ?></th>
-                                        <th><?php echo $rt->password ?></th>
                                         <th><?php echo $rt->rt ?></th>
                                         <th><?php echo $rt->rw ?></th>
                                         <th>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/edit_kk/' . $rt->noKk, 'Edit'); ?></button>
-                                            <button class="btn-lg danger"><?php echo anchor('data_warga/hapus_kk/' . $rt->noKk, 'Hapus'); ?></button>
-                                            <button class="btn-lg warning"><?php echo anchor('data_warga/detail_kk/' . $rt->noKk, 'Detail'); ?></button>
+                                            <a href="<?= base_url('rt/hapus_ketua_rt/' . $rt->id_ketua_rt) ?>" class="btn btn-danger hapus"><i class="fas fa-trash-alt"></i></a>
                                         </th>
                                     </tr>
                                     <?php $no++ ?>

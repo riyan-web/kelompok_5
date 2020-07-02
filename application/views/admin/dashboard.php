@@ -10,8 +10,8 @@
          </div><!-- /.col -->
          <div class="col-sm-6">
            <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item"><a href="#">Home</a></li>
-             <li class="breadcrumb-item active">Dashboard v1</li>
+             <li class="breadcrumb-item"><a href="#">Sipeka</a></li>
+             <li class="breadcrumb-item active">Dashboard</li>
            </ol>
          </div><!-- /.col -->
        </div><!-- /.row -->
@@ -84,14 +84,38 @@
          <!-- ./col -->
          <div class="col-lg-3 col-6">
            <!-- small box -->
-           <div class="small-box bg-danger">
+           <div class="small-box bg-primary">
              <div class="inner">
-               <p>Grafik Penduduk Domisili</p>
+               <p>Grafik Per Bulan KTP</p>
              </div>
              <div class="icon">
-               <i class="fas fa-fw fa-users"></i>
+               <i class="fas fa-fw fa-chart-area"></i>
              </div>
-             <a href="chart/ktp_per_rt" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             <a href="chart/ktp_per_bulan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           </div>
+         </div>
+         <div class="col-lg-3 col-6">
+           <!-- small box -->
+           <div class="small-box bg-success">
+             <div class="inner">
+               <p>Grafik Per Bulan KK</p>
+             </div>
+             <div class="icon">
+               <i class="fas fa-fw fa-chart-line"></i>
+             </div>
+             <a href="chart/kk_per_bulan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           </div>
+         </div>
+         <div class="col-lg-3 col-6">
+           <!-- small box -->
+           <div class="small-box bg-danger">
+             <div class="inner">
+               <p>Grafik Per Bulan Data Non Domisili</p>
+             </div>
+             <div class="icon">
+               <i class="fas fa-fw fa-chart-line"></i>
+             </div>
+             <a href="chart/domisili_per_bulan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
            </div>
          </div>
          <!-- ./col -->

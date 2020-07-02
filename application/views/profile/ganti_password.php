@@ -6,12 +6,11 @@
               <div class="row mb-2">
                   <div class="col-sm-6">
                       <h1 class="m-0 text-dark">Ganti Password</h1>
-                      <?php echo 'selamat datang ' . $user['nama']; ?>
                   </div><!-- /.col -->
                   <div class="col-sm-6">
                       <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="#">Home</a></li>
-                          <li class="breadcrumb-item active">Dashboard v1</li>
+                          <li class="breadcrumb-item"><a href="#">Profile</a></li>
+                          <li class="breadcrumb-item active">Ganti Password</li>
                       </ol>
                   </div><!-- /.col -->
               </div><!-- /.row -->
@@ -35,7 +34,7 @@
                               <?= form_error('password_baru2', ' <small class="text-danger pl-2">', '</small>'); ?>
                           </div>
                           <div class="form-group">
-                              <button type="submit" class="btn btn-primary">Ganti Password</button>
+                              <button type="submit" class="btn btn-warning"><i class="fas fa-key"></i> Ganti Password</button>
                           </div>
                       </form>
                   </div>

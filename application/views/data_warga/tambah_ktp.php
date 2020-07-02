@@ -33,7 +33,7 @@ $rt = $this->db->query($query_kodeRt)->result();
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="http://localhost/kelompok_5/data_warga/ktp">KTP</a></li>
                         <li class="breadcrumb-item active">Tambah KTP</li>
                     </ol>
                 </div>
@@ -117,14 +117,14 @@ $rt = $this->db->query($query_kodeRt)->result();
                                 </div>
                                 <div class="form-group">
                                     <label>RT</label>
-                                    <input type="text" enabled="enabled" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;">
+                                    <input type="text" enabled="enabled" value="<?= $rt_user['rt']; ?>" class="form-control" style="width: 100%;" readonly>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="kode_rt" value="<?= $rt_user['kodeRt']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>RW</label>
-                                    <input type="text" enabled="enabled" value="<?= $rt_user['rw']; ?>" class="form-control" style="width: 100%;">
+                                    <input type="text" enabled="enabled" value="<?= $rt_user['rw']; ?>" class="form-control" style="width: 100%;" readonly>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -141,6 +141,16 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <label>Kecamatan</label>
                                     <input type="text" name="kecamatan" class="form-control" style="width: 100%;">
                                     <?= form_error('kecamatan', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kabupaten</label>
+                                    <input type="text" name="kabupaten" class="form-control" style="width: 100%;">
+                                    <?= form_error('kabupaten', ' <small class="text-danger pl-2">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Provinsi</label>
+                                    <input type="text" name="provinsi" class="form-control" style="width: 100%;">
+                                    <?= form_error('provinsi', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Agama</label>
@@ -176,10 +186,16 @@ $rt = $this->db->query($query_kodeRt)->result();
                                     <input type="text" name="berlaku" class="form-control" style="width: 100%;">
                                     <?= form_error('berlaku', ' <small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
-
+                                <div class="forrm-group">
+                                    <label>Gambar KTP</label>
+                                    <input type="file" name="image" class="form-control">
+                                    <small>Biarkan Kosong Jika Anda Tidak Memiliki Gambar KTP Tersebut</small>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+                                        <button type="reset" class="btn btn-dark"><i class="fas fa-redo-alt"></i> Reset</button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
