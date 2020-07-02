@@ -58,7 +58,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter e  mail" autocomplete="off" value="<?= set_value('email'); ?>">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" autocomplete="off" value="<?= set_value('email'); ?>">
                   <?= form_error('email', ' <small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="form-group">
