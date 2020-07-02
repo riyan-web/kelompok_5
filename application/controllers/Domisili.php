@@ -182,20 +182,15 @@ class Domisili extends CI_Controller
 
     public function surat_domisili()
     {
-        $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
 
         $data['title'] = 'Surat Domisili';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar', $data);
-            $this->load->view('data_warga/surat_domisili', $data);
-            $this->load->view('template/footer');
-        }else{
-            redirect('Domisili/cetak_domisili');
-        }
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('data_warga/surat_domisili', $data);
+        $this->load->view('template/footer');
     }
 
     public function cetak_domisili()
