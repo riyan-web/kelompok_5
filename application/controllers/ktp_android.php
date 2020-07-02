@@ -23,6 +23,8 @@ class ktp_android extends REST_Controller
     function index_post()
     {
         $data = array(
+            'provinsi'          => $this->post('provinsi'),
+            'kabupaten'         => $this->post('kabupaten'),
             'nik'               => $this->post('nik'),
             'noKk'              => $this->post('noKk'),
             'nama'              => $this->post('nama'),
@@ -51,6 +53,8 @@ class ktp_android extends REST_Controller
     function index_put(){
         $id = $this->put('nik');
         $data = array(
+            'provinsi'          => $this->post('provinsi'),
+            'kabupaten'         => $this->post('kabupaten'),
             'nik'               => $this->put('nik'),
             'noKk'              => $this->put('noKk'),
             'nama'              => $this->put('nama'),

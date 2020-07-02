@@ -18,13 +18,13 @@ class kabkot_android extends REST_Controller
         $id = $this->get('name');
         $id2= $this->get('province_id');
         $id3= $this->get('id');
-        if ($id == '') {
+        if ($id3 == '') {
             $kontak = $this->db->get('regencies')->result();
         } else {
-            $this->db->where('name', $id);
+            $this->db->where('id', $id3);
             $kontak = $this->db->get('regencies')->result();
         }
-        $this->response($kontak, 200);
+        $this->response(array("result"=>$kontak, 200));
     }
 }
 ?>

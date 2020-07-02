@@ -22,7 +22,7 @@ class prov_android extends REST_Controller
             $this->db->where('name', $id);
             $kontak = $this->db->get('provinces')->result();
         }
-        $this->response($kontak, 200);
+        $this->response(array("result"=>$kontak, 200));
     }
 }
 ?>
