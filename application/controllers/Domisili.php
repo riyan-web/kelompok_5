@@ -88,7 +88,7 @@ class Domisili extends CI_Controller
                 }
             } else {
                 $post['image'] = 'default_domisili.jpg';
-                $this->domisili_model->input_domisili($post);
+                $this->Domisili_model->input_domisili($post);
                 if ($this->db->affected_rows() > 0) {
                     $this->session->set_flashdata(
                         'message',
